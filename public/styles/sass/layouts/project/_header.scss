@@ -1,0 +1,30 @@
+.project {
+  &__layout {
+    &__header {
+      display: flex;
+      background: $primary-color;
+      font-size: 2rem;
+      align-items: center;
+      color: white;
+      gap: 1rem;
+      padding: 0.7rem 1rem;
+      :first-child {
+        cursor: pointer;
+      }
+    }
+  }
+  &__navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    background: $primary-color;
+    align-items: center;
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+  }
+}

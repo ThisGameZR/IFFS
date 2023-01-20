@@ -1,0 +1,11 @@
+.project-document {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-left: rem(19px);
+  cursor: pointer;
+  &-wrap {
+    display: flex;
+    gap: rem(5px);
+  }
+}

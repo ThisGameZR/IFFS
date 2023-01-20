@@ -1,0 +1,41 @@
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    .project-image {
+      transform: scale(1.1);
+      color: $primary-color;
+    }
+  }
+  .project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    font-size: 12rem;
+    @include media("<=desktop") {
+      font-size: 8rem;
+    }
+    @include media("<=tablet") {
+      font-size: 6rem;
+    }
+    @include media("<=phone") {
+      font-size: 4rem;
+    }
+  }
+  .project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    h1 {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    p {
+      font-size: 0.8rem;
+      font-weight: 400;
+    }
+  }
+}

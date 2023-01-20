@@ -1,0 +1,17 @@
+.project-page {
+  display: flex;
+  height: rem(32px);
+  align-items: center;
+  margin-left: rem(42px);
+  gap: rem(5px);
+  cursor: pointer;
+  &:hover {
+    color: $primary-color;
+  }
+  &.active {
+    color: rgb(13, 60, 218);
+  }
+  &-wrap {
+    padding-top: rem(10px);
+  }
+}
