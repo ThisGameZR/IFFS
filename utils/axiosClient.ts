@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.NEXTAPI_URL || "http://localhost:3000/api";
+axios.defaults.baseURL = process.env.NEXTAPI_URL || "https://iffs.vercel.app/api";
 
 axios.interceptors.request.use(
   (config) => config,
