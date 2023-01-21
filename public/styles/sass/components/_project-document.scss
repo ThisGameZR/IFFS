@@ -2,10 +2,15 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-left: rem(19px);
-  cursor: pointer;
   &-wrap {
     display: flex;
-    gap: rem(5px);
+    justify-content: space-between;
+    align-items: center;
+    .document-toggle {
+      display: flex;
+      gap: rem(5px);
+      align-items: center;
+      cursor: pointer;
+    }
   }
 }

@@ -3,6 +3,18 @@
 * Testing
 *
 **/
+.color-edit {
+  color: rgb(243, 87, 15);
+}
+
+.color-add {
+  color: #4793ff;
+}
+
+.color-delete {
+  color: rgb(225, 66, 66);
+}
+
 *,
 *::before,
 *::after {
@@ -128,6 +140,16 @@ button:focus {
   flex-direction: column;
   gap: 1rem;
   padding-top: 1rem;
+  padding-left: 1.1875rem;
+  padding-right: 1.1875rem;
+}
+.project__layout .leftbar .add-project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.project__layout .leftbar .add-project svg {
+  cursor: pointer;
 }
 .project__layout .rightbar {
   height: 100%;
@@ -244,12 +266,17 @@ button:focus {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-left: 1.1875rem;
-  cursor: pointer;
 }
 .project-document-wrap {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.project-document-wrap .document-toggle {
+  display: flex;
   gap: 0.3125rem;
+  align-items: center;
+  cursor: pointer;
 }
 
 .project-page {
@@ -392,6 +419,15 @@ button:focus {
   right: 0;
   left: 0;
   top: 0;
+}
+
+.simple-menu {
+  display: flex;
+  gap: 0.3125rem;
+  align-items: center;
+}
+.simple-menu-item {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=global.css.map */

@@ -8,6 +8,16 @@
     flex-direction: column;
     gap: rem(16px);
     padding-top: rem(16px);
+    padding-left: rem(19px);
+    padding-right: rem(19px);
+    .add-project {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      svg {
+        cursor: pointer;
+      }
+    }
   }
   //Container
 
