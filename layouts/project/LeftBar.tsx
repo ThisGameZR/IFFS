@@ -5,7 +5,9 @@ import { AiOutlinePlus } from "react-icons/ai";
 import Modal from "components/Modal";
 import { fetchCreateDocument } from "fetch/document";
 import { useUser } from "context/UserProvider";
+import { useQueryClient } from "react-query";
 export default function Leftbar({ project }: { project: Project }) {
+  const queryClient = useQueryClient();
   const [activeDocument, setActiveDocument] = React.useState(project?.documents?.[0].id);
   const [modal, setModal] = React.useState(false);
   const [input, setInput] = React.useState("");
@@ -17,6 +19,7 @@ export default function Leftbar({ project }: { project: Project }) {
     }).then(() => {
       setModal(false);
       setInput("");
+      queryClient.invalidateQueries("projects");
     });
   };
   return (

@@ -1,0 +1,110 @@
+.btn-primary:hover {
+  background-color: darken($primary-color, 10%);
+  border-color: darken($primary-color, 10%);
+}
+
+.btn-primary:active {
+  background-color: darken($primary-color, 20%);
+  border-color: darken($primary-color, 20%);
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
+}
+
+.btn-danger {
+  background-color: rgb(225, 66, 66);
+  border-color: rgb(225, 66, 66);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: darken(rgb(225, 66, 66), 10%);
+  border-color: darken(rgb(225, 66, 66), 10%);
+}
+
+.btn-danger:active {
+  background-color: darken(rgb(225, 66, 66), 20%);
+  border-color: darken(rgb(225, 66, 66), 20%);
+}
+
+.btn-danger:focus {
+  box-shadow: 0 0 0 0.2rem rgba(rgb(225, 66, 66), 0.5);
+}
+
+.btn-warning {
+  background-color: rgb(243, 87, 15);
+  border-color: rgb(243, 87, 15);
+}
+
+.btn-warning:hover {
+  background-color: darken(rgb(243, 87, 15), 10%);
+  border-color: darken(rgb(243, 87, 15), 10%);
+}
+
+.btn-warning:active {
+  background-color: darken(rgb(243, 87, 15), 20%);
+  border-color: darken(rgb(243, 87, 15), 20%);
+}
+
+.btn-warning:focus {
+  box-shadow: 0 0 0 0.2rem rgba(rgb(243, 87, 15), 0.5);
+}
+
+.btn-success {
+  background-color: rgb(0, 200, 83);
+  border-color: rgb(0, 200, 83);
+}
+
+.btn-success:hover {
+  background-color: darken(rgb(0, 200, 83), 10%);
+  border-color: darken(rgb(0, 200, 83), 10%);
+}
+
+.btn-success:active {
+  background-color: darken(rgb(0, 200, 83), 20%);
+  border-color: darken(rgb(0, 200, 83), 20%);
+}
+
+.btn-success:focus {
+  box-shadow: 0 0 0 0.2rem rgba(rgb(0, 200, 83), 0.5);
+}
+
+.btn-info {
+  background-color: rgb(0, 123, 255);
+  border-color: rgb(0, 123, 255);
+}
+
+.btn-info:hover {
+  background-color: darken(rgb(0, 123, 255), 10%);
+  border-color: darken(rgb(0, 123, 255), 10%);
+}
+
+.btn-info:active {
+  background-color: darken(rgb(0, 123, 255), 20%);
+  border-color: darken(rgb(0, 123, 255), 20%);
+}
+
+.btn-info:focus {
+  box-shadow: 0 0 0 0.2rem rgba(rgb(0, 123, 255), 0.5);
+}
+
+.btn-secondary {
+  background-color: rgb(108, 117, 125);
+  border-color: rgb(108, 117, 125);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: darken(rgb(108, 117, 125), 10%);
+  border-color: darken(rgb(108, 117, 125), 10%);
+}
+
+.btn-secondary:active {
+  background-color: darken(rgb(108, 117, 125), 20%);
+  border-color: darken(rgb(108, 117, 125), 20%);
+}
+
+.btn-secondary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(rgb(108, 117, 125), 0.5);
+}

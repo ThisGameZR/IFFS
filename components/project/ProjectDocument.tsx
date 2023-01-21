@@ -5,7 +5,7 @@ import ProjectPage from "./ProjectPage";
 import { useRouter } from "next/router";
 import SimpleMenu from "components/SimpleMenu";
 import Modal from "components/Modal";
-import { fetchUpdateDocumentName } from "fetch/document";
+import { fetchDeleteDocument, fetchUpdateDocumentName } from "fetch/document";
 import { useUser } from "context/UserProvider";
 import { useQueryClient } from "react-query";
 import { fetchCreatePage } from "fetch/page";
@@ -55,6 +55,14 @@ export default function ProjectDocument({
     });
   };
 
+  const [openDelete, setOpenDelete] = React.useState(false);
+  const deleteDocumentHandler = () => {
+    fetchDeleteDocument(currentUser?.id as string, projectId as string, document.id as string).then((res) => {
+      setOpenDelete(false);
+      queryClient.invalidateQueries("projects");
+    });
+  };
+
   return (
     <>
       <Modal open={openEdit} setOpen={setOpenEdit} title="Edit Document Name">
@@ -85,6 +93,16 @@ export default function ProjectDocument({
           }}
         />
       </Modal>
+      <Modal open={openDelete} setOpen={setOpenDelete} title="All pages will be gone?">
+        <div className="modal-delete">
+          <button className="btn btn-danger" onClick={() => deleteDocumentHandler()}>
+            Delete
+          </button>
+          <button className="btn btn-secondary" onClick={() => setOpenDelete(false)}>
+            Cancel
+          </button>
+        </div>
+      </Modal>
       <div className="project-document">
         <div className="project-document-wrap">
           <div className="document-toggle" onClick={() => setDisplay(!display)}>
@@ -94,7 +112,7 @@ export default function ProjectDocument({
           <SimpleMenu
             onEdit={() => setOpenEdit(true)}
             onAdd={() => setOpenAdd(true)}
-            onDelete={() => console.log("delete")}
+            onDelete={() => setOpenDelete(true)}
           />
         </div>
         {display ? (

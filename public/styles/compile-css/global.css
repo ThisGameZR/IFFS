@@ -15,6 +15,122 @@
   color: rgb(225, 66, 66);
 }
 
+.btn-primary {
+  background-color: #4793ff;
+  border-color: #4793ff;
+}
+
+.btn-primary:hover {
+  background-color: #1475ff;
+  border-color: #1475ff;
+}
+
+.btn-primary:active {
+  background-color: #005de0;
+  border-color: #005de0;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(71, 147, 255, 0.5);
+}
+
+.btn-danger {
+  background-color: rgb(225, 66, 66);
+  border-color: rgb(225, 66, 66);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #cf2121;
+  border-color: #cf2121;
+}
+
+.btn-danger:active {
+  background-color: #a31a1a;
+  border-color: #a31a1a;
+}
+
+.btn-danger:focus {
+  box-shadow: 0 0 0 0.2rem rgba(225, 66, 66, 0.5);
+}
+
+.btn-warning {
+  background-color: rgb(243, 87, 15);
+  border-color: rgb(243, 87, 15);
+}
+
+.btn-warning:hover {
+  background-color: #c5450a;
+  border-color: #c5450a;
+}
+
+.btn-warning:active {
+  background-color: #953407;
+  border-color: #953407;
+}
+
+.btn-warning:focus {
+  box-shadow: 0 0 0 0.2rem rgba(243, 87, 15, 0.5);
+}
+
+.btn-success {
+  background-color: rgb(0, 200, 83);
+  border-color: rgb(0, 200, 83);
+}
+
+.btn-success:hover {
+  background-color: #00953e;
+  border-color: #00953e;
+}
+
+.btn-success:active {
+  background-color: #006229;
+  border-color: #006229;
+}
+
+.btn-success:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 83, 0.5);
+}
+
+.btn-info {
+  background-color: rgb(0, 123, 255);
+  border-color: rgb(0, 123, 255);
+}
+
+.btn-info:hover {
+  background-color: #0062cc;
+  border-color: #0062cc;
+}
+
+.btn-info:active {
+  background-color: #004a99;
+  border-color: #004a99;
+}
+
+.btn-info:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.btn-secondary {
+  background-color: rgb(108, 117, 125);
+  border-color: rgb(108, 117, 125);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
+  border-color: #545b62;
+}
+
+.btn-secondary:active {
+  background-color: #3d4246;
+  border-color: #3d4246;
+}
+
+.btn-secondary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+}
+
 *,
 *::before,
 *::after {
@@ -104,6 +220,14 @@ button:focus {
     z-index: 9999;
   }
 }
+.btn {
+  border: 1px solid #000;
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
 .project__layout__header {
   display: flex;
   background: #4793ff;
@@ -419,6 +543,12 @@ button:focus {
   right: 0;
   left: 0;
   top: 0;
+}
+
+.modal-delete {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .simple-menu {

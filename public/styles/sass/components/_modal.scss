@@ -90,3 +90,9 @@
   left: 0;
   top: 0;
 }
+
+.modal-delete {
+  display: flex;
+  justify-content: center;
+  gap: rem(32px);
+}
