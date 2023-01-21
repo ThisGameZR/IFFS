@@ -11,7 +11,7 @@ export async function fetchGetProjects(userId: string) {
 
 export async function fetchCreateProject(userId: string, project: Project) {
   return await axiosClient
-    .post<Project>(`/projects`, {
+    .post<Project>(`/project`, {
       userId,
       project,
     })
@@ -26,7 +26,7 @@ export async function fetchUpdateProject(
   content: string
 ) {
   return await axiosClient
-    .put<Project>(`/projects`, {
+    .put<Project>(`/project`, {
       userId: userId,
       projectId: projectId,
       documentId: documentId,

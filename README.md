@@ -8,4 +8,4 @@
 
 ### Project Link
 
-https://iffs-e2ax.vercel.app/
+https://iffs.vercel.app/
