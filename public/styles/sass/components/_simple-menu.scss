@@ -1,0 +1,8 @@
+.simple-menu {
+  display: flex;
+  gap: rem(5px);
+  align-items: center;
+  &-item {
+    cursor: pointer;
+  }
+}

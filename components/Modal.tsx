@@ -13,7 +13,16 @@ export default function Modal({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, () => setOpen(false));
-
+  // handle esc key press to close modal
+  React.useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
   return (
     <div className="modal" style={open ? { display: "block" } : { display: "none" }}>
       <div className="details-modal-overlay"></div>

@@ -1,1 +1,16 @@
 $primary-color: #4793ff;
+
+.color-edit {
+  color: rgb(243, 87, 15);
+}
+
+.color-save {
+}
+
+.color-add {
+  color: $primary-color;
+}
+
+.color-delete {
+  color: rgb(225, 66, 66);
+}
