@@ -1,6 +1,7 @@
 import { useContainer } from "context/ContainerProvider";
 import { useUser } from "context/UserProvider";
-import { fetchGetProjects, fetchUpdateProject } from "fetch/project";
+import { fetchUpdatePage } from "fetch/page";
+import { fetchGetProjects } from "fetch/project";
 import { Project } from "models/Project";
 import { useRouter } from "next/router";
 import React from "react";
@@ -29,7 +30,7 @@ export default function Document() {
       <div
         className="save-and-analyze"
         onClick={() => {
-          fetchUpdateProject(currentUser?.id as string, id as string, document as string, page as string, text);
+          fetchUpdatePage(currentUser?.id as string, id as string, document as string, page as string, text);
         }}
       >
         <MdOutlineAnalytics />
