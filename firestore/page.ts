@@ -9,3 +9,15 @@ export const getPageCollections = (userId: string, projectId: string, documentId
 export const createPage = async (userId: string, projectId: string, documentId: string, page: Page) => {
   return await addDoc(getPageCollections(userId, projectId, documentId), page);
 };
+
+export const updatePage = async (
+  userId: string,
+  projectId: string,
+  documentId: string,
+  pageId: string,
+  content: string
+) => {
+  return await updateDoc(doc(db, "users", userId, "projects", projectId, "documents", documentId, "pages", pageId), {
+    content: content,
+  });
+};

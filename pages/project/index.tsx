@@ -27,6 +27,7 @@ export default function landing() {
   const handleNewProject = async () => {
     await fetchCreateProject(currentUser?.id!, {
       name: input,
+      description: "",
     });
     queryClient.invalidateQueries("projects");
     setInput("");

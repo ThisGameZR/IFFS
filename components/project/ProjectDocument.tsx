@@ -65,44 +65,6 @@ export default function ProjectDocument({
 
   return (
     <>
-      <Modal open={openEdit} setOpen={setOpenEdit} title="Edit Document Name">
-        <input
-          type="text"
-          autoFocus={openEdit}
-          placeholder="Press enter to rename document"
-          value={editInput}
-          onChange={(e) => setEditInput(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              editDocumentNameHandler();
-            }
-          }}
-        />
-      </Modal>
-      <Modal open={openAdd} setOpen={setOpenAdd} title="New Page">
-        <input
-          type="text"
-          autoFocus={openAdd}
-          placeholder="Press enter to create new page"
-          value={addInput}
-          onChange={(e) => setAddInput(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              addPageHandler();
-            }
-          }}
-        />
-      </Modal>
-      <Modal open={openDelete} setOpen={setOpenDelete} title="All pages will be gone?">
-        <div className="modal-delete">
-          <button className="btn btn-danger" onClick={() => deleteDocumentHandler()}>
-            Delete
-          </button>
-          <button className="btn btn-secondary" onClick={() => setOpenDelete(false)}>
-            Cancel
-          </button>
-        </div>
-      </Modal>
       <div className="project-document">
         <div className="project-document-wrap">
           <div className="document-toggle" onClick={() => setDisplay(!display)}>
@@ -143,6 +105,44 @@ export default function ProjectDocument({
           <></>
         )}
       </div>
+      <Modal open={openEdit} setOpen={setOpenEdit} title="Edit Document Name">
+        <input
+          type="text"
+          autoFocus={openEdit}
+          placeholder="Press enter to rename document"
+          value={editInput}
+          onChange={(e) => setEditInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              editDocumentNameHandler();
+            }
+          }}
+        />
+      </Modal>
+      <Modal open={openAdd} setOpen={setOpenAdd} title="New Page">
+        <input
+          type="text"
+          autoFocus={openAdd}
+          placeholder="Press enter to create new page"
+          value={addInput}
+          onChange={(e) => setAddInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              addPageHandler();
+            }
+          }}
+        />
+      </Modal>
+      <Modal open={openDelete} setOpen={setOpenDelete} title="All pages will be gone?">
+        <div className="modal-delete">
+          <button className="btn btn-danger" onClick={() => deleteDocumentHandler()}>
+            Delete
+          </button>
+          <button className="btn btn-secondary" onClick={() => setOpenDelete(false)}>
+            Cancel
+          </button>
+        </div>
+      </Modal>
     </>
   );
 }
