@@ -14,3 +14,10 @@ $primary-color: #4793ff;
 .color-delete {
   color: rgb(225, 66, 66);
 }
+
+.btn-primary {
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+@import "./buttons";

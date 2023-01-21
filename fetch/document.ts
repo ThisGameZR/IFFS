@@ -21,3 +21,15 @@ export async function fetchUpdateDocumentName(userId: string, projectId: string,
     })
     .then((res) => res.data);
 }
+
+export async function fetchDeleteDocument(userId: string, projectId: string, documentId: string) {
+  return await axiosClient
+    .delete<Document>(`/document`, {
+      data: {
+        userId,
+        projectId,
+        documentId,
+      },
+    })
+    .then((res) => res.data);
+}
