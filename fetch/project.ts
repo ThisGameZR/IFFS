@@ -18,20 +18,20 @@ export async function fetchCreateProject(userId: string, project: Project) {
     .then((res) => res.data);
 }
 
-export async function fetchUpdateProject(
-  userId: string,
-  projectId: string,
-  documentId: string,
-  pageId: string,
-  content: string
-) {
+export async function fetchUpdateProjectName(userId: string, projectId: string, name: string) {
   return await axiosClient
     .put<Project>(`/project`, {
-      userId: userId,
-      projectId: projectId,
-      documentId: documentId,
-      pageId: pageId,
-      content: content,
+      userId,
+      projectId,
+      name,
+    })
+    .then((res) => res.data);
+}
+
+export async function fetchDeleteProject(userId: string, projectId: string) {
+  return await axiosClient
+    .delete<Project>(`/project`, {
+      data: { userId, projectId },
     })
     .then((res) => res.data);
 }
