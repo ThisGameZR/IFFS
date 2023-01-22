@@ -8,7 +8,7 @@ import { useUser } from "context/UserProvider";
 import { useQueryClient } from "react-query";
 export default function Leftbar({ project }: { project: Project }) {
   const queryClient = useQueryClient();
-  const [activeDocument, setActiveDocument] = React.useState(project?.documents?.[0].id);
+  const [activeDocument, setActiveDocument] = React.useState(project?.documents?.[0]?.id);
   const [modal, setModal] = React.useState(false);
   const [input, setInput] = React.useState("");
   const { currentUser } = useUser();

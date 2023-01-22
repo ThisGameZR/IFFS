@@ -5,13 +5,18 @@
   margin-left: rem(42px);
   gap: rem(5px);
   cursor: pointer;
-  &:hover {
-    color: $primary-color;
-  }
+
   &.active {
     color: rgb(13, 60, 218);
   }
   &-wrap {
     padding-top: rem(10px);
+    .page-name {
+      display: flex;
+      gap: rem(5px);
+      &:hover {
+        color: $primary-color;
+      }
+    }
   }
 }

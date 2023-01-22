@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { Project } from "models/Project";
 import { db } from "./init";
-import { addDoc, collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, setDoc, deleteDoc, updateDoc } from "firebase/firestore";
 
 export const getProjectCollections = (userId: string) => {
   return collection(db, "users", userId, "projects");
@@ -49,14 +49,12 @@ export const createProject = async (userId: string, project: Project) => {
   return await addDoc(getProjectCollections(userId), project);
 };
 
-export const updateProject = async (
-  userId: string,
-  projectId: string,
-  documentId: string,
-  pageId: string,
-  content: string
-) => {
-  return await updateDoc(doc(db, "users", userId, "projects", projectId, "documents", documentId, "pages", pageId), {
-    content: content,
+export const updateProjectName = async (userId: string, projectId: string, name: string) => {
+  return await updateDoc(doc(db, "users", userId, "projects", projectId), {
+    name: name,
   });
+};
+
+export const deleteProject = async (userId: string, projectId: string) => {
+  return await deleteDoc(doc(db, "users", userId, "projects", projectId));
 };

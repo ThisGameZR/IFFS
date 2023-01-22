@@ -1,4 +1,4 @@
-import { createProject, getProjects, updateProject } from "firestore/project";
+import { createProject, deleteProject, getProjects, updateProjectName } from "firestore/project";
 import { Project } from "models/Project";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -14,11 +14,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   if (req.method === "PUT") {
     const userId = req.body.userId as string;
     const projectId = req.body.projectId as string;
-    const documentId = req.body.documentId as string;
-    const pageId = req.body.pageId as string;
-    const content = req.body.content as string;
-    const updatedProject = await updateProject(userId, projectId, documentId, pageId, content);
+    const name = req.body.name as string;
+    const updatedProject = await updateProjectName(userId, projectId, name);
     return res.status(200).json(updatedProject);
+  }
+  if (req.method === "DELETE") {
+    const userId = req.body.userId as string;
+    const projectId = req.body.projectId as string;
+    const deletedProject = await deleteProject(userId, projectId);
+    return res.status(200).json(deletedProject);
   }
   return res.status(404).json("Not Found");
 }
