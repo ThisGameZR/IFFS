@@ -30,7 +30,7 @@ export default function Document() {
       <div
         className="save-and-analyze"
         onClick={() => {
-          fetchUpdatePage(currentUser?.id as string, id as string, document as string, page as string, text);
+          fetchUpdatePage(currentUser?.id as string, id as string, document as string, page as string, undefined, text);
         }}
       >
         <MdOutlineAnalytics />

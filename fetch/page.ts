@@ -17,7 +17,8 @@ export async function fetchUpdatePage(
   projectId: string,
   documentId: string,
   pageId: string,
-  content: string
+  name?: string,
+  content?: string
 ) {
   return await axiosClient
     .put<Page>(`/page`, {
@@ -25,7 +26,16 @@ export async function fetchUpdatePage(
       projectId: projectId,
       documentId: documentId,
       pageId: pageId,
+      name: name,
       content: content,
+    })
+    .then((res) => res.data);
+}
+
+export async function fetchDeletePage(userId: string, projectId: string, documentId: string, pageId: string) {
+  return await axiosClient
+    .delete<Page>(`/page`, {
+      data: { userId, projectId, documentId, pageId },
     })
     .then((res) => res.data);
 }

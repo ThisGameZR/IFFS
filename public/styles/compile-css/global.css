@@ -411,14 +411,18 @@ button:focus {
   gap: 0.3125rem;
   cursor: pointer;
 }
-.project-page:hover {
-  color: #4793ff;
-}
 .project-page.active {
   color: rgb(13, 60, 218);
 }
 .project-page-wrap {
   padding-top: 0.625rem;
+}
+.project-page-wrap .page-name {
+  display: flex;
+  gap: 0.3125rem;
+}
+.project-page-wrap .page-name:hover {
+  color: #4793ff;
 }
 
 .project-card {

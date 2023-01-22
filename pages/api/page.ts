@@ -1,4 +1,4 @@
-import { createPage, updatePage } from "firestore/page";
+import { createPage, deletePage, updatePage } from "firestore/page";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
@@ -14,9 +14,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const projectId = req.body.projectId as string;
     const documentId = req.body.documentId as string;
     const pageId = req.body.pageId as string;
-    const content = req.body.content as string;
-    const updatedProject = await updatePage(userId, projectId, documentId, pageId, content);
+    const name = req.body.name;
+    const content = req.body.content;
+    const updatedProject = await updatePage(userId, projectId, documentId, pageId, name, content);
     return res.status(200).json(updatedProject);
+  }
+  if (req.method === "DELETE") {
+    const { userId, projectId, documentId, pageId } = req.body;
+    const deletedPage = await deletePage(userId, projectId, documentId, pageId);
+    return res.status(200).json(deletedPage);
   }
   return res.status(404).json("Not Found");
 }
