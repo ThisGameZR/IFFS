@@ -1,3 +1,5 @@
+import { Choices, Usage } from "./Completion";
+
 interface Project {
   id?: string;
   name?: string;
@@ -19,4 +21,10 @@ interface Page {
   content?: string;
 }
 
-export type { Project, Document, Page };
+interface Analyze {
+  text: string;
+  created: Date;
+  usage: Usage;
+}
+
+export type { Project, Document, Page, Analyze };

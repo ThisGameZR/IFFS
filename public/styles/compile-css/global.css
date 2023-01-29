@@ -366,11 +366,14 @@ button:focus {
 }
 .project__layout__container .content .save-and-analyze {
   display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 2.25rem;
   right: 2.25rem;
   gap: 0.25rem;
-  background: rgb(221, 221, 221);
+  background: rgb(239, 237, 237);
+  border-radius: 0.625rem;
   font-size: 0.875rem;
   padding: 0.3125rem 0.625rem;
   cursor: pointer;
