@@ -1,0 +1,12 @@
+.analytic {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  &-chart {
+    display: flex;
+    width: 500px;
+    height: 400px;
+  }
+}

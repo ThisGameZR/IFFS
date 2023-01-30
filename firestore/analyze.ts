@@ -15,3 +15,9 @@ export const createAnalyze = async (
 ) => {
   return await addDoc(getAnalyzeCollections(userId, projectId, documentId, pageId), analyze);
 };
+
+export const getAnalyzes = async (userId: string, projectId: string, documentId: string, pageId: string) => {
+  return (await getDocs(getAnalyzeCollections(userId, projectId, documentId, pageId))).docs.map((doc) => {
+    return { id: doc.id, ...doc.data() };
+  });
+};

@@ -1,6 +1,6 @@
 import { useContainer } from "context/ContainerProvider";
 import { useUser } from "context/UserProvider";
-import { fetchGetAnalyze } from "fetch/analyze";
+import { fetchPostAnalyze } from "fetch/analyze";
 import { fetchUpdatePage } from "fetch/page";
 import { fetchGetProjects } from "fetch/project";
 import { Project } from "models/Project";
@@ -36,7 +36,7 @@ export default function Document() {
     const pageId = page as string;
     await fetchUpdatePage(userId, projectId, documentId, pageId, undefined, text);
     setLoading(true);
-    await fetchGetAnalyze(text, userId, projectId, documentId, pageId);
+    await fetchPostAnalyze(text, userId, projectId, documentId, pageId);
     setLoading(false);
   };
 
@@ -54,6 +54,7 @@ export default function Document() {
         Save & Analyze
       </div>
       <textarea
+        maxLength={2000}
         value={text}
         onChange={(e) => {
           setText(e.target.value);

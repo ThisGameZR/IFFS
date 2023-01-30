@@ -1,10 +1,19 @@
 interface Completion {
   id: string;
-  object: string;
+  text: Prompt;
   created: number;
-  model: string;
-  choices: Choices[];
   usage: Usage;
+}
+
+interface Prompt {
+  prompt: string;
+  problems: {
+    type: string;
+    label: string;
+    text: string;
+    sentiment: string;
+    suggestion: string;
+  }[];
 }
 
 interface Choices {
@@ -20,4 +29,4 @@ interface Usage {
   total_tokens: number;
 }
 
-export type { Completion, Choices, Usage };
+export type { Completion, Prompt, Choices, Usage };
