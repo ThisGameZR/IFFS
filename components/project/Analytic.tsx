@@ -46,7 +46,7 @@ export default function Analytic() {
   }[];
   const problemsAmount = analyzes?.text.problems.length || 0;
   const labels = processedData.map((p) => {
-    return (p.count / analyzes!.text.problems.length) * 100 + "%" + p.label;
+    return (p.count / analyzes!.text.problems.length) * 100 + "% " + p.label;
   });
   const others =
     ((problemsAmount - processedData.slice(0, 5).reduce((acc, cur) => (acc += cur.count), 0)) / problemsAmount) * 100 +
