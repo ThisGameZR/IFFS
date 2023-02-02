@@ -1,0 +1,37 @@
+.identify-feedback {
+  width: 836.02px;
+  height: 80.77px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  .badge {
+    width: 1%;
+    height: 100%;
+    &.Positive {
+      background-color: $success-color;
+    }
+    &.Negative {
+      background-color: $danger-color;
+    }
+    &.Neutral {
+      background-color: $primary-color;
+    }
+  }
+  .title {
+    width: 12%;
+    text-align: center;
+    &.positive-feedback {
+      background-color: rgba($success-color, 0.2);
+    }
+    &.negative-feedback {
+      background-color: rgba($danger-color, 0.2);
+    }
+    &.neutral-feedback {
+      background-color: rgba($primary-color, 0.2);
+    }
+  }
+  .text {
+    width: 80%;
+  }
+}

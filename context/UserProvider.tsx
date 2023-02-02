@@ -20,7 +20,7 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const queryClient = new QueryClient();
   useQuery("users", fetchGetUser, {
     onSuccess: (data) => {
-      const findUser = data.find((u: User) => u.email === user?.email);
+      const findUser = data.find((u: User) => u.email == user?.email);
       if (!findUser) {
         fetchCreateUser({
           email: user?.email!,
