@@ -78,11 +78,14 @@
         position: relative;
         .save-and-analyze {
           display: flex;
+          align-items: center;
+          justify-content: center;
           position: absolute;
           top: rem(36px);
           right: rem(36px);
           gap: rem(4px);
-          background: rgb(221, 221, 221);
+          background: rgb(239, 237, 237);
+          border-radius: rem(10px);
           font-size: rem(14px);
           padding: rem(5px) rem(10px);
           cursor: pointer;
