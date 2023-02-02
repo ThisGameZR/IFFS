@@ -11,6 +11,7 @@ import { useQuery } from "react-query";
 import { ClockLoader } from "react-spinners";
 export default function Document() {
   const { toggleDocument } = useContainer();
+
   const [text, setText] = React.useState("");
   const router = useRouter();
   const { id, document, page } = router.query;

@@ -15,6 +15,10 @@
   color: rgb(225, 66, 66);
 }
 
+.color-success {
+  color: rgb(23, 142, 33);
+}
+
 .btn-primary {
   background-color: #4793ff;
   border-color: #4793ff;
@@ -563,17 +567,111 @@ button:focus {
   cursor: pointer;
 }
 
+.identify-box {
+  width: 193.89px;
+  height: 254px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  background: white;
+  border-radius: 14px;
+}
+.identify-box > .icon {
+  font-size: 3rem;
+}
+.identify-box > .title {
+  font-size: 0.875rem;
+}
+.identify-box > .amount {
+  font-size: 4rem;
+}
+.identify-box > .feedback {
+  font-size: 1rem;
+}
+.identify-box.highlight {
+  color: white;
+  background: radial-gradient(140.94% 140.94% at 50% 100%, #5a7cfb 0%, rgba(45, 89, 255, 0.322207) 67.78%, rgba(90, 124, 251, 0) 100%);
+  filter: drop-shadow(43px 73px 34px rgba(0, 0, 0, 0.01)) drop-shadow(24px 41px 29px rgba(0, 0, 0, 0.02)) drop-shadow(11px 18px 21px rgba(0, 0, 0, 0.04)) drop-shadow(3px 5px 12px rgba(0, 0, 0, 0.04)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.05));
+}
+.identify-box.emphasize {
+  color: #4793ff;
+}
+
+.identify-feedback {
+  width: 836.02px;
+  height: 80.77px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+}
+.identify-feedback .badge {
+  width: 1%;
+  height: 100%;
+}
+.identify-feedback .badge.Positive {
+  background-color: rgb(23, 142, 33);
+}
+.identify-feedback .badge.Negative {
+  background-color: rgb(225, 66, 66);
+}
+.identify-feedback .badge.Neutral {
+  background-color: #4793ff;
+}
+.identify-feedback .title {
+  width: 12%;
+  text-align: center;
+}
+.identify-feedback .title.positive-feedback {
+  background-color: rgba(23, 142, 33, 0.2);
+}
+.identify-feedback .title.negative-feedback {
+  background-color: rgba(225, 66, 66, 0.2);
+}
+.identify-feedback .title.neutral-feedback {
+  background-color: rgba(71, 147, 255, 0.2);
+}
+.identify-feedback .text {
+  width: 80%;
+}
+
 .analytic {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
   overflow-y: scroll;
+  scroll-behavior: smooth;
+  padding: 0rem 2rem;
+  gap: 0;
 }
 .analytic-chart {
   display: flex;
-  width: 500px;
-  height: 400px;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+.analytic-identify-group {
+  padding: 2rem 2rem;
+  border-radius: 1.25rem;
+  background-color: #f6f7fa;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6rem;
+}
+.analytic-identify-group-box {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+}
+.analytic-identify-group-feedback {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  align-items: center;
 }
 
 /*# sourceMappingURL=global.css.map */
