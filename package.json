@@ -2,6 +2,11 @@
   "name": "iffs",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "ThisGameZR",
+    "email": "thisgamezforwork@gmail.com",
+    "url": "https://thisgamez-web.vercel.app/"
+  },
   "scripts": {
     "dev": "concurrently --kill-others \"npm run sass\" \"npm run start\"",
     "sass": "sass --watch public/styles/sass:public/styles/compile-css",
