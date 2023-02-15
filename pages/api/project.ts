@@ -6,10 +6,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   if (req.method === "GET") {
   }
   if (req.method === "POST") {
-    const userId = req.body.userId as string;
-    const project = req.body.project as Project;
-    const newProject = await createProject(userId, project);
-    return res.status(200).json(newProject);
+    try {
+      const userId = req.body.userId as string;
+      const project = req.body.project as Project;
+      const newProject = await createProject(userId, project);
+      return res.status(200).json(newProject);
+    } catch (e: any) {
+      console.log(e);
+    }
   }
   if (req.method === "PUT") {
     const userId = req.body.userId as string;

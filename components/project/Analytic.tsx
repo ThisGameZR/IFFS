@@ -28,7 +28,7 @@ export default function Analytic() {
     "analyzes",
     () => fetchGetAnalyze(currentUser?.id as string, projectId as string, documentId as string, pageId as string),
     {
-      enabled: !!currentUser,
+      enabled: !!currentUser && !!pageId && !!documentId,
       refetchOnWindowFocus: false,
     }
   );

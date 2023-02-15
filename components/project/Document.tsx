@@ -41,6 +41,8 @@ export default function Document() {
     setLoading(false);
   };
 
+  const disable = !(!!id && !!document && !!page);
+
   if (!toggleDocument) return <></>;
 
   return (
@@ -56,7 +58,8 @@ export default function Document() {
       </div>
       <textarea
         maxLength={2000}
-        value={text}
+        disabled={disable}
+        value={disable ? "Select the page first" : text}
         onChange={(e) => {
           setText(e.target.value);
         }}

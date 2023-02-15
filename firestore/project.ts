@@ -3,6 +3,10 @@ import { Project } from "models/Project";
 import { db } from "./init";
 import { addDoc, collection, doc, getDocs, setDoc, deleteDoc, updateDoc } from "firebase/firestore";
 
+export const getUserCollection = (userId: string) => {
+  return collection(db, "users", userId);
+};
+
 export const getProjectCollections = (userId: string) => {
   return collection(db, "users", userId, "projects");
 };
@@ -46,7 +50,12 @@ export const getProjects = async (userId: string) => {
 };
 
 export const createProject = async (userId: string, project: Project) => {
-  return await addDoc(getProjectCollections(userId), project);
+  try {
+    return await addDoc(getProjectCollections(userId), project);
+  } catch (e: any) {
+    console.log(e);
+    return e;
+  }
 };
 
 export const updateProjectName = async (userId: string, projectId: string, name: string) => {
