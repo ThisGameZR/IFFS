@@ -25,18 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     try {
       const completion = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `Giving the prompt:"${prompt}"\nReturn data in json format\n
-            {\n
-              "prompt": prompt,\n
-              "problems": [\n
-                "type": "UX||UI",\n
-                "label": "Problem Label",\n
-                "text": "Text in prompt which imply the problem",\n
-                "sentiment": "Positive||Negative",\n
-                "suggestion": "Suggestion||null",\n
-              ]\n
-            }
-        `,
+        prompt: prompt,
         max_tokens: 3000,
       });
       await createAnalyze(userId, projectId, documentId, pageId, {
