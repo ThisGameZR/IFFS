@@ -61,6 +61,39 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="home-features">
+          <h1>IFFS Ability</h1>
+          <div className="grid">
+            <div className="feature-box">
+              <div className="image">
+                <img src="/assets/ico1.png" alt="" />
+              </div>
+              <h4>Criticality Identity</h4>
+              <p>Visual the importance of feedback and eliminate duplicate feedback.</p>
+            </div>
+            <div className="feature-box">
+              <div className="image">
+                <img src="/assets/ico2.png" alt="" />
+              </div>
+              <h4>Overall Visualize</h4>
+              <p>Visualize the overall feedback type of customers on the website.</p>
+            </div>
+            <div className="feature-box">
+              <div className="image">
+                <img src="/assets/ico3.png" alt="" />
+              </div>
+              <h4>Categorization</h4>
+              <p>Auto identify each feedback seperately and categorization.</p>
+            </div>
+            <div className="feature-box">
+              <div className="image">
+                <img src="/assets/ico1.png" alt="" />
+              </div>
+              <h4>Suggestion</h4>
+              <p>Propose some solution according to the problem or suggestion.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
