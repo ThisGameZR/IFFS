@@ -1,4 +1,6 @@
 $primary-color: #4793ff;
+$danger-color: rgb(225, 66, 66);
+$success-color: rgb(23, 142, 33);
 
 .color-edit {
   color: rgb(243, 87, 15);
@@ -13,6 +15,10 @@ $primary-color: #4793ff;
 
 .color-delete {
   color: rgb(225, 66, 66);
+}
+
+.color-success {
+  color: rgb(23, 142, 33);
 }
 
 .btn-primary {
