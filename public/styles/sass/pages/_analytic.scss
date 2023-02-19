@@ -1,0 +1,36 @@
+.analytic {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  padding: 0rem 2rem;
+  gap: 0;
+  &-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+  }
+  &-identify-group {
+    padding: 2rem 2rem;
+    border-radius: rem(20px);
+    background-color: #f6f7fa;
+    display: flex;
+    flex-direction: column;
+    &-box {
+      display: flex;
+      gap: rem(20px);
+      justify-content: center;
+    }
+    &-feedback {
+      margin-top: 2rem;
+      display: flex;
+      gap: rem(32px);
+      flex-direction: column;
+      align-items: center;
+    }
+    margin-bottom: 6rem;
+  }
+}

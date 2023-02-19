@@ -15,6 +15,10 @@
   color: rgb(225, 66, 66);
 }
 
+.color-success {
+  color: rgb(23, 142, 33);
+}
+
 .btn-primary {
   background-color: #4793ff;
   border-color: #4793ff;
@@ -366,11 +370,14 @@ button:focus {
 }
 .project__layout__container .content .save-and-analyze {
   display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 2.25rem;
   right: 2.25rem;
   gap: 0.25rem;
-  background: rgb(221, 221, 221);
+  background: rgb(239, 237, 237);
+  border-radius: 0.625rem;
   font-size: 0.875rem;
   padding: 0.3125rem 0.625rem;
   cursor: pointer;
@@ -558,6 +565,321 @@ button:focus {
 }
 .simple-menu-item {
   cursor: pointer;
+}
+
+.identify-box {
+  width: 193.89px;
+  height: 254px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  background: white;
+  border-radius: 14px;
+}
+.identify-box > .icon {
+  font-size: 3rem;
+}
+.identify-box > .title {
+  font-size: 0.875rem;
+}
+.identify-box > .amount {
+  font-size: 4rem;
+}
+.identify-box > .feedback {
+  font-size: 1rem;
+}
+.identify-box.highlight {
+  color: white;
+  background: radial-gradient(140.94% 140.94% at 50% 100%, #5a7cfb 0%, rgba(45, 89, 255, 0.322207) 67.78%, rgba(90, 124, 251, 0) 100%);
+  filter: drop-shadow(43px 73px 34px rgba(0, 0, 0, 0.01)) drop-shadow(24px 41px 29px rgba(0, 0, 0, 0.02)) drop-shadow(11px 18px 21px rgba(0, 0, 0, 0.04)) drop-shadow(3px 5px 12px rgba(0, 0, 0, 0.04)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.05));
+}
+.identify-box.emphasize {
+  color: #4793ff;
+}
+
+.identify-feedback {
+  width: 836.02px;
+  height: 80.77px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+}
+.identify-feedback .badge {
+  width: 1%;
+  height: 100%;
+}
+.identify-feedback .badge.Positive {
+  background-color: rgb(23, 142, 33);
+}
+.identify-feedback .badge.Negative {
+  background-color: rgb(225, 66, 66);
+}
+.identify-feedback .badge.Neutral {
+  background-color: #4793ff;
+}
+.identify-feedback .title {
+  width: 12%;
+  text-align: center;
+}
+.identify-feedback .title.positive-feedback {
+  background-color: rgba(23, 142, 33, 0.2);
+}
+.identify-feedback .title.negative-feedback {
+  background-color: rgba(225, 66, 66, 0.2);
+}
+.identify-feedback .title.neutral-feedback {
+  background-color: rgba(71, 147, 255, 0.2);
+}
+.identify-feedback .text {
+  width: 80%;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  overflow-y: scroll;
+  background: #f3f4f8;
+}
+.home-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  background: #fff;
+}
+.home-nav h4 {
+  color: #4793ff;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.home-nav button {
+  color: #4793ff;
+  border: 1px solid #4793ff;
+  border-radius: 2.5rem;
+  padding: 0.3rem 1.3rem;
+  outline: none;
+  cursor: pointer;
+  background: white;
+}
+.home-nav button:hover {
+  background: rgba(71, 147, 255, 0.1);
+}
+.home-hero {
+  display: flex;
+}
+.home-hero-image {
+  display: flex;
+  width: 100%;
+  height: 50rem;
+  position: relative;
+}
+.home-hero-image img {
+  position: absolute;
+}
+.home-hero-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+}
+.home-hero-content > h1 {
+  color: #4793ff;
+  font-weight: 800;
+  font-size: 5rem;
+}
+.home-hero-content > .section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+}
+.home-hero-content > .section > .head {
+  color: #4793ff;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.home-hero-content > .section > .head img {
+  width: 50%;
+  height: 80%;
+  object-fit: contain;
+}
+.home-hero-content > .section > .head > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 1rem;
+  width: 50%;
+}
+.home-hero-content > .section > .head > div h4 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.home-hero-content > .section > .head > div p {
+  font-size: 0.87rem;
+}
+.home-hero-content > .section > .main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.home-features {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 12rem;
+}
+.home-features > h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+.home-features .grid {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.home-features .grid .feature-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  width: 16%;
+}
+.home-features .grid .feature-box .image {
+  padding: 1rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+.home-features .grid .feature-box h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.home-features .grid .feature-box p {
+  text-align: center;
+  font-size: 0.9rem;
+}
+.home-how-it-works {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 4rem 3rem;
+}
+.home-how-it-works > .image {
+  width: 40%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.home-how-it-works > .image img {
+  object-fit: contain;
+}
+.home-how-it-works-wrap {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.125rem;
+}
+.home-how-it-works-wrap > .box {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  gap: 0.3125rem;
+  background: #ffffff;
+  box-shadow: 5px 10px 20px #dcdfe9;
+  border-radius: 10px;
+  width: 45%;
+}
+.home-how-it-works-wrap > .box h4 {
+  font-size: 1rem;
+}
+.home-how-it-works-wrap > .box p {
+  font-size: 0.8rem;
+}
+.home-get-started {
+  background: #7498fb;
+  display: flex;
+  justify-content: center;
+  padding: 4rem 3rem;
+  gap: 4rem;
+}
+.home-get-started .text {
+  color: white;
+  display: flex;
+  width: 25%;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+.home-get-started .text h4 {
+  font-size: 1.2rem;
+}
+.home-get-started .text p {
+  font-size: 1rem;
+}
+.home-get-started .text button {
+  cursor: pointer;
+  background: white;
+  color: #7498fb;
+  padding: 0.5rem;
+  border-radius: 2rem;
+}
+.home-get-started .image {
+  display: flex;
+  width: 40%;
+}
+.home-get-started .image img {
+  object-fit: contain;
+}
+
+.analytic {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  padding: 0rem 2rem;
+  gap: 0;
+}
+.analytic-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+.analytic-identify-group {
+  padding: 2rem 2rem;
+  border-radius: 1.25rem;
+  background-color: #f6f7fa;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6rem;
+}
+.analytic-identify-group-box {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+}
+.analytic-identify-group-feedback {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  align-items: center;
 }
 
 /*# sourceMappingURL=global.css.map */
