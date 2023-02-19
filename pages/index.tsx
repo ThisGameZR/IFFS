@@ -94,6 +94,45 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="home-how-it-works">
+          <div className="image">
+            <img src="/assets/AI.png" alt="" />
+          </div>
+          <div className="home-how-it-works-wrap">
+            <div className="box">
+              <h4>Sentiment Analysis</h4>
+              <p>To Categorize the feedback type</p>
+            </div>
+            <div className="box">
+              <h4>Natural language analysis</h4>
+              <p>To identify issues from the feedback</p>
+            </div>
+            <div className="box">
+              <h4>Dialogue prediction</h4>
+              <p>Create a suggestion for solving issues</p>
+            </div>
+          </div>
+        </div>
+        <div className="home-get-started">
+          <div className="text">
+            <h4>Tried of going through tons of feedback</h4>
+            <p>
+              Lets start for quickly identify and address pressing issues, <br />
+              improve the user experience, and make data-driven
+              <br /> decisions about the website's development with ease.
+            </p>
+            <button
+              onClick={() => {
+                session ? router.push("/") : signIn();
+              }}
+            >
+              START YOUR PROJECT
+            </button>
+          </div>
+          <div className="image">
+            <img src="/assets/project.png" alt="" />
+          </div>
+        </div>
       </div>
     </>
   );
