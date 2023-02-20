@@ -592,15 +592,8 @@ button:focus {
 }
 .identify-box.highlight {
   color: white;
-  background: radial-gradient(
-    140.94% 140.94% at 50% 100%,
-    #5a7cfb 0%,
-    rgba(45, 89, 255, 0.322207) 67.78%,
-    rgba(90, 124, 251, 0) 100%
-  );
-  filter: drop-shadow(43px 73px 34px rgba(0, 0, 0, 0.01)) drop-shadow(24px 41px 29px rgba(0, 0, 0, 0.02))
-    drop-shadow(11px 18px 21px rgba(0, 0, 0, 0.04)) drop-shadow(3px 5px 12px rgba(0, 0, 0, 0.04))
-    drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.05));
+  background: radial-gradient(140.94% 140.94% at 50% 100%, #5a7cfb 0%, rgba(45, 89, 255, 0.322207) 67.78%, rgba(90, 124, 251, 0) 100%);
+  filter: drop-shadow(43px 73px 34px rgba(0, 0, 0, 0.01)) drop-shadow(24px 41px 29px rgba(0, 0, 0, 0.02)) drop-shadow(11px 18px 21px rgba(0, 0, 0, 0.04)) drop-shadow(3px 5px 12px rgba(0, 0, 0, 0.04)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.05));
 }
 .identify-box.emphasize {
   color: #4793ff;
@@ -664,7 +657,11 @@ button:focus {
   font-size: 2rem;
   font-weight: 600;
 }
-.home-nav button {
+.home-nav > div {
+  display: flex;
+  gap: 1.25rem;
+}
+.home-nav > div button {
   color: #4793ff;
   border: 1px solid #4793ff;
   border-radius: 2.5rem;
@@ -673,7 +670,7 @@ button:focus {
   cursor: pointer;
   background: white;
 }
-.home-nav button:hover {
+.home-nav > div button:hover {
   background: rgba(71, 147, 255, 0.1);
 }
 .home-hero {
