@@ -14,16 +14,20 @@
       font-size: 2rem;
       font-weight: 600;
     }
-    button {
-      color: $primary-color;
-      border: 1px solid $primary-color;
-      border-radius: rem(40px);
-      padding: 0.3rem 1.3rem;
-      outline: none;
-      cursor: pointer;
-      background: white;
-      &:hover {
-        background: rgba($primary-color, 0.1);
+    & > div {
+      display: flex;
+      gap: rem(20px);
+      button {
+        color: $primary-color;
+        border: 1px solid $primary-color;
+        border-radius: rem(40px);
+        padding: 0.3rem 1.3rem;
+        outline: none;
+        cursor: pointer;
+        background: white;
+        &:hover {
+          background: rgba($primary-color, 0.1);
+        }
       }
     }
     background: #fff;

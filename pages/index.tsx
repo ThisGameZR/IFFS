@@ -16,26 +16,27 @@ export default function Home() {
       <div className="home">
         <nav className="home-nav">
           <h4>IFFS</h4>
-          {status != "authenticated" ? (
+          <div>
             <button
               onClick={() => {
-                signIn();
+                session ? router.push("/project") : signIn();
               }}
             >
               Start Project
             </button>
-          ) : (
-            <button
-              onClick={async () => {
-                toast.loading("Logging out");
-                await sleep(1000);
-                await signOut();
-                toast.success("Successfully logout");
-              }}
-            >
-              Logout
-            </button>
-          )}
+            {status == "authenticated" && (
+              <button
+                onClick={async () => {
+                  toast.loading("Logging out");
+                  await sleep(1000);
+                  await signOut();
+                  toast.success("Successfully logout");
+                }}
+              >
+                Logout
+              </button>
+            )}
+          </div>
         </nav>
         <div className="home-hero">
           <div className="home-hero-image">
@@ -123,7 +124,7 @@ export default function Home() {
             </p>
             <button
               onClick={() => {
-                session ? router.push("/") : signIn();
+                session ? router.push("/project") : signIn();
               }}
             >
               START YOUR PROJECT
