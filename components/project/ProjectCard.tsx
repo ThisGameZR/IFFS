@@ -7,6 +7,7 @@ import Modal from "components/Modal";
 import { fetchDeleteProject, fetchUpdateProjectName } from "fetch/project";
 import { useUser } from "context/UserProvider";
 import { useQueryClient } from "react-query";
+import { useContainer } from "context/ContainerProvider";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const router = useRouter();
@@ -73,7 +74,13 @@ export default function ProjectCard({ project }: { project: Project }) {
           <GrDocumentText />
         </div>
         <div className="project-info">
-          <h1 onClick={() => routerAppend(project)}>{project.name}</h1>
+          <h1
+            onClick={() => {
+              routerAppend(project);
+            }}
+          >
+            {project.name}
+          </h1>
           <SimpleMenu onEdit={() => setOpenEdit(true)} onDelete={() => setOpenDelete(true)} />
         </div>
       </div>

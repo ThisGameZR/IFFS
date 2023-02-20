@@ -3,7 +3,7 @@ import { useUser } from "context/UserProvider";
 import { fetchGetAnalyze } from "fetch/analyze";
 import { useRouter } from "next/router";
 import React from "react";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { Prompt } from "models/Completion";
@@ -14,25 +14,31 @@ import { AiOutlineSmile } from "react-icons/ai";
 import { MdOutlineMoodBad } from "react-icons/md";
 import { RiChatHeartLine } from "react-icons/ri";
 import IdentifyFeedback from "./analytic/IdentifyFeedback";
-import { Issue } from "models/Project";
+import { Analyze, Issue } from "models/Project";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const CHART_COLORS = ["#8779F7", "#4793FF", "#FF768C", "#FFAD71", "#48DCBF", "#DCDCE5"];
 
 export default function Analytic() {
   const router = useRouter();
-  const { toggleAnalytic } = useContainer();
+  const queryClient = useQueryClient();
 
-  const { id: projectId, document: documentId, page: pageId } = router.query;
+  const { id: projectId } = router.query;
+  const { documentId, pageId, toggleAnalytic } = useContainer();
   const { currentUser } = useUser();
-  const { data: analyzes, isLoading: isAnalyzeLoading } = useQuery(
-    "analyzes",
-    () => fetchGetAnalyze(currentUser?.id as string, projectId as string, documentId as string, pageId as string),
-    {
-      enabled: !!currentUser && !!pageId && !!documentId,
-      refetchOnWindowFocus: false,
-    }
-  );
+
+  const [analyzes, setAnalyzes] = React.useState<Analyze>();
+  const [isAnalyzeLoading, setIsAnalyzeLoading] = React.useState(false);
+  React.useEffect(() => {
+    if (!currentUser?.id || !projectId || !documentId || !pageId) return;
+    setIsAnalyzeLoading(true);
+    fetchGetAnalyze(currentUser?.id as string, projectId as string, documentId as string, pageId as string).then(
+      (res) => {
+        setAnalyzes(res);
+        setIsAnalyzeLoading(false);
+      }
+    );
+  }, [pageId, documentId]);
 
   const problemCounters = analyzes?.issues.map((p) => {
     return {
@@ -143,10 +149,10 @@ export default function Analytic() {
           />
         </div>
         <div className="analytic-identify-group-feedback">
-          {processedData.map((p) => {
+          {processedData.map((p, i) => {
             return (
               //@ts-ignore
-              <IdentifyFeedback type={p.sentiment} text={p.text} />
+              <IdentifyFeedback key={i + p.text} type={p.sentiment} text={p.text} />
             );
           })}
         </div>
