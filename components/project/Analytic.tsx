@@ -14,6 +14,7 @@ import { AiOutlineSmile } from "react-icons/ai";
 import { MdOutlineMoodBad } from "react-icons/md";
 import { RiChatHeartLine } from "react-icons/ri";
 import IdentifyFeedback from "./analytic/IdentifyFeedback";
+import { Issue } from "models/Project";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const CHART_COLORS = ["#8779F7", "#4793FF", "#FF768C", "#FFAD71", "#48DCBF", "#DCDCE5"];
@@ -33,20 +34,20 @@ export default function Analytic() {
     }
   );
 
-  const problemCounters = analyzes?.text.problems.map((p) => {
+  const problemCounters = analyzes?.issues.map((p) => {
     return {
       type: p.type,
       label: p.label,
       sentiment: p.sentiment,
-      text: p.text,
+      text: p.issue,
       suggestion: p.suggestion,
-      count: countProblem(p.label, analyzes.text),
+      count: countProblem(p.label, analyzes.issues),
     };
   });
 
-  function countProblem(label: string, prompt: Prompt) {
+  function countProblem(label: string, issues: Issue[]) {
     let count = 0;
-    prompt.problems.forEach((p) => {
+    issues.forEach((p) => {
       if (p.label == label) {
         count++;
       }
@@ -69,9 +70,9 @@ export default function Analytic() {
     suggestion: string;
     count: number;
   }[];
-  const problemsAmount = analyzes?.text.problems.length || 0;
+  const problemsAmount = analyzes?.issues.length || 0;
   const labels = processedData.map((p) => {
-    return ((p.count / analyzes!.text.problems.length) * 100).toPrecision(4) + "% " + p.label;
+    return ((p.count / analyzes!.issues.length) * 100).toPrecision(4) + "% " + p.label;
   });
   const others =
     (

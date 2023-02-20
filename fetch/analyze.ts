@@ -1,4 +1,5 @@
 import { Completion, Prompt } from "models/Completion";
+import { Analyze } from "models/Project";
 import axiosClient from "utils/axiosClient";
 
 export async function fetchPostAnalyze(
@@ -21,7 +22,7 @@ export async function fetchPostAnalyze(
 
 export async function fetchGetAnalyze(userId: string, projectId: string, documentId: string, pageId: string) {
   return await axiosClient
-    .get<Completion[]>("/ai", {
+    .get<Analyze[]>("/ai", {
       params: {
         userId,
         projectId,
@@ -30,16 +31,8 @@ export async function fetchGetAnalyze(userId: string, projectId: string, documen
       },
     })
     .then((res) => {
-      const x = res.data.sort((a, b) => a.created - b.created)?.[0];
-      try {
-        //@ts-ignore
-        return {
-          ...x,
-          //@ts-ignore
-          text: JSON.parse(x.text),
-        } as Completion;
-      } catch (e) {
-        console.log(e);
-      }
+      //@ts-ignore
+      const x = res.data.sort((a, b) => a.usage.created - b.usage.created)?.[0];
+      return x;
     });
 }

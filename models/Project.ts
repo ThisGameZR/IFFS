@@ -22,9 +22,16 @@ interface Page {
 }
 
 interface Analyze {
-  text: string;
-  created: Date;
+  issues: Issue[];
   usage: Usage;
 }
 
-export type { Project, Document, Page, Analyze };
+interface Issue {
+  issue: string;
+  sentiment: string;
+  type: string;
+  label: string;
+  suggestion: string;
+}
+
+export type { Project, Document, Page, Analyze, Issue };
