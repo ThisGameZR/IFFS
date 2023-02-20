@@ -1,0 +1,43 @@
+.suggestion-card {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  background: white;
+  border: 2px solid rgba(black, 0.3);
+  .problem {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    gap: rem(7px);
+    h4 {
+      font-size: 0.9rem;
+      color: rgba(black, 0.6);
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: rem(7px);
+    }
+    .badge {
+      background: $danger-color;
+      color: white;
+      align-self: flex-end;
+      padding: 0.5rem 2rem;
+      border-radius: rem(20px);
+    }
+    border-bottom: 1px solid rgba(black, 0.3);
+  }
+  .suggestion {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    gap: rem(7px);
+    h4 {
+      font-size: 0.9rem;
+      color: rgba(black, 0.6);
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: rem(7px);
+    }
+  }
+}

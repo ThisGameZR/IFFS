@@ -7,9 +7,13 @@ import { fetchCreateDocument } from "fetch/document";
 import { useUser } from "context/UserProvider";
 import { useQueryClient } from "react-query";
 import { useContainer } from "context/ContainerProvider";
+import { useRouter } from "next/router";
 export default function Leftbar({ project }: { project: Project }) {
+  const router = useRouter();
+
   const queryClient = useQueryClient();
   const { setDocumentId } = useContainer();
+
   const [activeDocument, setActiveDocument] = React.useState(project?.documents?.[0]?.id);
   const [modal, setModal] = React.useState(false);
   const [input, setInput] = React.useState("");
