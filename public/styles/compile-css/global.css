@@ -657,7 +657,11 @@ button:focus {
   font-size: 2rem;
   font-weight: 600;
 }
-.home-nav button {
+.home-nav > div {
+  display: flex;
+  gap: 1.25rem;
+}
+.home-nav > div button {
   color: #4793ff;
   border: 1px solid #4793ff;
   border-radius: 2.5rem;
@@ -666,7 +670,7 @@ button:focus {
   cursor: pointer;
   background: white;
 }
-.home-nav button:hover {
+.home-nav > div button:hover {
   background: rgba(71, 147, 255, 0.1);
 }
 .home-hero {
