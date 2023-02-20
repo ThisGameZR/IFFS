@@ -283,7 +283,13 @@ button:focus {
   height: 100%;
   width: 18.75rem;
   background-color: #fff;
+  overflow-y: scroll;
   border-right: 1px solid #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  align-items: center;
+  padding: 2rem 0;
 }
 
 .project {
@@ -635,6 +641,50 @@ button:focus {
 }
 .identify-feedback .text {
   width: 80%;
+}
+
+.suggestion-card {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+}
+.suggestion-card .problem {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  gap: 0.4375rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+.suggestion-card .problem h4 {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+.suggestion-card .problem p {
+  font-size: 1rem;
+  margin-bottom: 0.4375rem;
+}
+.suggestion-card .problem .badge {
+  background: rgb(225, 66, 66);
+  color: white;
+  align-self: flex-end;
+  padding: 0.5rem 2rem;
+  border-radius: 1.25rem;
+}
+.suggestion-card .suggestion {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  gap: 0.4375rem;
+}
+.suggestion-card .suggestion h4 {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+.suggestion-card .suggestion p {
+  font-size: 1rem;
+  margin-bottom: 0.4375rem;
 }
 
 .home {
