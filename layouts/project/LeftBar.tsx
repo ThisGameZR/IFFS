@@ -6,8 +6,10 @@ import Modal from "components/Modal";
 import { fetchCreateDocument } from "fetch/document";
 import { useUser } from "context/UserProvider";
 import { useQueryClient } from "react-query";
+import { useContainer } from "context/ContainerProvider";
 export default function Leftbar({ project }: { project: Project }) {
   const queryClient = useQueryClient();
+  const { setDocumentId } = useContainer();
   const [activeDocument, setActiveDocument] = React.useState(project?.documents?.[0]?.id);
   const [modal, setModal] = React.useState(false);
   const [input, setInput] = React.useState("");
@@ -33,7 +35,10 @@ export default function Leftbar({ project }: { project: Project }) {
             <ProjectDocument
               key={document.id}
               document={document}
-              setActiveDocument={() => setActiveDocument(document.id)}
+              setActiveDocument={() => {
+                setActiveDocument(document.id);
+                setDocumentId(document.id!);
+              }}
               activeDocument={activeDocument}
             />
           ))}

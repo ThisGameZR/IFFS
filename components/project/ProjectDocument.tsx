@@ -9,6 +9,7 @@ import { fetchDeleteDocument, fetchUpdateDocumentName } from "fetch/document";
 import { useUser } from "context/UserProvider";
 import { useQueryClient } from "react-query";
 import { fetchCreatePage } from "fetch/page";
+import { useContainer } from "context/ContainerProvider";
 
 export default function ProjectDocument({
   document,
@@ -22,6 +23,7 @@ export default function ProjectDocument({
   const router = useRouter();
   const queryClient = useQueryClient();
 
+  const { setPageId } = useContainer();
   const { id: projectId } = router.query;
   const { currentUser } = useUser();
 
@@ -87,6 +89,7 @@ export default function ProjectDocument({
                   onClick={() => {
                     setActiveDocument();
                     setActivePage(page.id);
+                    setPageId(page.id!);
                     // get current route
                     const currentRoute = router.pathname;
                     // get current query
