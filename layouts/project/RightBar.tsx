@@ -29,7 +29,14 @@ export default function RightBar() {
     <div className="project__layout">
       <div className="rightbar">
         {analyze?.issues.map((issue) => {
-          return <SuggestionCard issue={issue.issue} suggestion={issue.suggestion} />;
+          return (
+            <SuggestionCard
+              issue={issue.issue}
+              suggestion={issue.suggestion}
+              sentiment={issue.sentiment}
+              type={issue.type}
+            />
+          );
         })}
       </div>
     </div>

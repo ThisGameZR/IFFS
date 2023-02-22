@@ -86,7 +86,7 @@ export default function Analytic() {
       100
     ).toPrecision(4) + "% Others";
   const data = {
-    labels: others == "0% Others" ? labels.slice(0, 5) : [...labels.slice(0, 5), others],
+    labels: others == "0.000% Others" ? labels.slice(0, 5) : [...labels.slice(0, 5), others],
     datasets: [
       {
         data: [
@@ -108,23 +108,123 @@ export default function Analytic() {
     return count;
   }
 
+  const UXPositive =
+    (
+      (processedData.filter((p) => p.type === "UX").filter((p) => p.sentiment === "Positive").length /
+        processedData.filter((p) => p.type === "UX").length) *
+      100
+    ).toFixed(2) + "%";
+
+  const UXNegative =
+    (
+      (processedData.filter((p) => p.type === "UX").filter((p) => p.sentiment === "Negative").length /
+        processedData.filter((p) => p.type === "UX").length) *
+      100
+    ).toFixed(2) + "%";
+
+  const UIPositive =
+    (
+      (processedData.filter((p) => p.type === "UI").filter((p) => p.sentiment === "Positive").length /
+        processedData.filter((p) => p.type === "UI").length) *
+      100
+    ).toFixed(2) + "%";
+
+  const UINegative =
+    (
+      (processedData.filter((p) => p.type === "UI").filter((p) => p.sentiment === "Negative").length /
+        processedData.filter((p) => p.type === "UI").length) *
+      100
+    ).toFixed(2) + "%";
+
   if (!toggleAnalytic) return <></>;
 
   if (isAnalyzeLoading) return <ClockLoader />;
   return (
     <div className="analytic">
-      <div className="analytic-chart">
-        <Doughnut
-          data={data}
-          options={{
-            animation: true,
-            plugins: {
-              legend: {
-                position: "right",
+      <div className="analytic-header">
+        <div className="analytic-header-chart">
+          <Doughnut
+            data={data}
+            options={{
+              animation: true,
+              plugins: {
+                title: {
+                  display: true,
+                  position: "top",
+                  text: "Popular Feedback",
+                },
+                legend: {
+                  position: "right",
+                  labels: {
+                    boxWidth: 15,
+                    boxHeight: 15,
+                  },
+                },
               },
-            },
-          }}
-        />
+            }}
+          />
+        </div>
+        <div className="analytic-header-feedback">
+          <h3>UX/UI Feedback Ratio</h3>
+          <div>
+            <h4>UX</h4>
+            <div className="bar">
+              <div
+                style={{
+                  width: UXPositive,
+                }}
+                className="positive"
+              ></div>
+              <div
+                style={{
+                  width: UXNegative,
+                }}
+                className="negative"
+              ></div>
+            </div>
+          </div>
+          <div>
+            <h4>UI</h4>
+            <div className="bar">
+              <div
+                style={{
+                  width: UIPositive,
+                }}
+                className="positive"
+              ></div>
+              <div
+                style={{
+                  width: UINegative,
+                }}
+                className="negative"
+              ></div>
+            </div>
+          </div>
+          <div className="legend">
+            <div className="positive row">
+              <div className="badge Positive">Positive</div>
+              <div className="col">
+                <div className="type UX">UX</div>
+                <span>{UXPositive}</span>
+              </div>
+              <div className="col">
+                <div className="type UI">UI</div>
+                <span>{UIPositive}</span>
+              </div>
+            </div>
+            <div className="negative row">
+              <div className="badge Negative">Negative</div>
+              <div className="col">
+                <div className="type UX">UX</div>
+                <span>{UXNegative}</span>
+              </div>
+              <div className="col">
+                <div className="type UI">UI</div>
+                <span>{UINegative}</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="analytic-identify-group">
         <div className="analytic-identify-group-box">
@@ -133,26 +233,18 @@ export default function Analytic() {
             icon={<AiOutlineSmile />}
             title="POSITIVE"
             amount={sentimentProblems(processedData, "Positive")}
-            className="color-success"
           />
           <IdentifyBox
             icon={<MdOutlineMoodBad />}
             title="NEGATIVE"
-            className="color-delete"
             amount={sentimentProblems(processedData, "Negative")}
-          />
-          <IdentifyBox
-            icon={<RiChatHeartLine />}
-            title="SUGGESTION"
-            amount={sentimentProblems(processedData, "Neutral")}
-            className="emphasize"
           />
         </div>
         <div className="analytic-identify-group-feedback">
           {processedData.map((p, i) => {
             return (
               //@ts-ignore
-              <IdentifyFeedback key={i + p.text} type={p.sentiment} text={p.text} />
+              <IdentifyFeedback key={i + p.text} type={p.type} sentiment={p.sentiment} text={p.text} />
             );
           })}
         </div>

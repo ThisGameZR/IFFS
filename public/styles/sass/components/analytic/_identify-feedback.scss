@@ -6,32 +6,46 @@
   justify-content: space-between;
   background-color: white;
   .badge {
-    width: 1%;
+    width: 0.5%;
     height: 100%;
     &.Positive {
-      background-color: $success-color;
+      background-color: #48dcbf;
     }
     &.Negative {
-      background-color: $danger-color;
+      background-color: #8779f7;
     }
-    &.Neutral {
-      background-color: $primary-color;
-    }
+    // &.Neutral {
+    //   background-color: $primary-color;
+    // }
   }
   .title {
-    width: 12%;
+    width: 8.5%;
+    padding: 0.25rem 0;
+    border-radius: rem(5px);
     text-align: center;
     &.positive-feedback {
-      background-color: rgba($success-color, 0.2);
+      background-color: #dbf4e7;
     }
     &.negative-feedback {
-      background-color: rgba($danger-color, 0.2);
+      background-color: #e7dcff;
     }
-    &.neutral-feedback {
-      background-color: rgba($primary-color, 0.2);
+    // &.neutral-feedback {
+    //   background-color: rgba($primary-color, 0.2);
+    // }
+  }
+  .type {
+    padding: 0.25rem;
+    border-radius: rem(5px);
+    &.UX {
+      background-color: #63778f;
+      color: white;
+    }
+    &.UI {
+      background-color: #f0f2f4;
+      color: #44556a;
     }
   }
   .text {
-    width: 80%;
+    width: 82%;
   }
 }
