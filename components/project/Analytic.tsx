@@ -156,6 +156,7 @@ export default function Analytic() {
     <div className="analytic">
       <div className="analytic-header">
         <div className="analytic-header-chart">
+          <h3>Popular Feedback</h3>
           <Doughnut
             data={data}
             options={{
