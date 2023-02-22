@@ -14,14 +14,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   const queryClient = useQueryClient();
 
   const routerAppend = (project: Project) => {
-    router.push(
-      "/project/" +
-        project.id +
-        "?document=" +
-        project.documents?.[0]?.id +
-        "&page=" +
-        project.documents?.[0]?.pages?.[0]?.id
-    );
+    router.push("/project/" + project.id);
   };
 
   const { currentUser } = useUser();

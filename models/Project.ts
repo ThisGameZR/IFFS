@@ -28,8 +28,8 @@ interface Analyze {
 
 interface Issue {
   issue: string;
-  sentiment: string;
-  type: string;
+  sentiment: "Positive" | "Negative";
+  type: "UX" | "UI";
   label: string;
   suggestion: string;
 }

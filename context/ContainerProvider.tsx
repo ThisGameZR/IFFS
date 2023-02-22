@@ -1,3 +1,4 @@
+import { Project } from "models/Project";
 import React from "react";
 
 const ContainerContext = React.createContext<{
@@ -9,6 +10,8 @@ const ContainerContext = React.createContext<{
   setDocumentId: React.Dispatch<React.SetStateAction<string>>;
   pageId: string;
   setPageId: React.Dispatch<React.SetStateAction<string>>;
+  project: Project | null;
+  setProject: React.Dispatch<React.SetStateAction<Project | null>>;
 }>({
   toggleDocument: false,
   setToggleDocument: () => {},
@@ -18,6 +21,8 @@ const ContainerContext = React.createContext<{
   setDocumentId: () => {},
   pageId: "",
   setPageId: () => {},
+  project: null,
+  setProject: () => {},
 });
 
 export const useContainer = () => React.useContext(ContainerContext);
@@ -27,6 +32,7 @@ const ContainerProvider = ({ children }: { children: React.ReactNode }) => {
   const [toggleAnalytic, setToggleAnalytic] = React.useState(false);
   const [documentId, setDocumentId] = React.useState("");
   const [pageId, setPageId] = React.useState("");
+  const [project, setProject] = React.useState<Project | null>(null);
   const value = React.useMemo(() => {
     return {
       toggleDocument,
@@ -37,6 +43,8 @@ const ContainerProvider = ({ children }: { children: React.ReactNode }) => {
       setDocumentId,
       pageId,
       setPageId,
+      project,
+      setProject,
     };
   }, [
     toggleDocument,
@@ -47,6 +55,8 @@ const ContainerProvider = ({ children }: { children: React.ReactNode }) => {
     setDocumentId,
     pageId,
     setPageId,
+    project,
+    setProject,
   ]);
   return <ContainerContext.Provider value={value}>{children}</ContainerContext.Provider>;
 };
