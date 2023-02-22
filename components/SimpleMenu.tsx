@@ -18,22 +18,22 @@ export default function SimpleMenu({
     <>
       <div className="simple-menu">
         {onEdit && (
-          <div className="simple-menu-item color-edit" onClick={onEdit}>
+          <div className="simple-menu-item color-edit" onClick={onEdit} title="Rename">
             <AiOutlineEdit />
           </div>
         )}
         {onSave && (
-          <div className="simple-menu-item color-save" onClick={onSave}>
+          <div className="simple-menu-item color-save" onClick={onSave} title="Save">
             <FiSave />
           </div>
         )}
         {onAdd && (
-          <div className="simple-menu-item color-add" onClick={onAdd}>
+          <div className="simple-menu-item color-add" onClick={onAdd} title="Create">
             <AiOutlinePlus />
           </div>
         )}
         {onDelete && (
-          <div className="simple-menu-item color-delete" onClick={onDelete}>
+          <div className="simple-menu-item color-delete" onClick={onDelete} title="Delete">
             <BsTrash />
           </div>
         )}

@@ -103,7 +103,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       return res.status(200).send(analyze);
     } catch (e: any) {
       console.log(e);
-      return res.status(400).send("AI error: " + JSON.stringify(e));
+      return res.status(400).send("Something went wrong with AI, please try again");
     }
   }
   if (req.method === "PUT") {

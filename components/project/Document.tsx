@@ -4,6 +4,7 @@ import { fetchPostAnalyze } from "fetch/analyze";
 import { fetchUpdatePage } from "fetch/page";
 import { useRouter } from "next/router";
 import React from "react";
+import { toast } from "react-hot-toast";
 import { MdOutlineAnalytics } from "react-icons/md";
 import { ClockLoader } from "react-spinners";
 export default function Document() {
@@ -29,8 +30,22 @@ export default function Document() {
     const projectId = id as string;
     await fetchUpdatePage(userId, projectId, documentId, pageId, undefined, text);
     setLoading(true);
-    await fetchPostAnalyze(text, userId, projectId, documentId, pageId);
-    setLoading(false);
+    try {
+      toast.promise(fetchPostAnalyze(text, userId, projectId, documentId, pageId), {
+        loading: "Analyzing your data...",
+        success: () => {
+          setLoading(false);
+          return "Successfully analyzing your data";
+        },
+        error: () => {
+          setLoading(false);
+          return "Something went wrong with the AI";
+        },
+      });
+    } catch (e: any) {
+      toast.error("Something went wrong with the AI");
+      setLoading(false);
+    }
   };
 
   const disable = !(!!id && !!documentId && !!pageId);
@@ -42,8 +57,11 @@ export default function Document() {
       <div
         className="save-and-analyze"
         onClick={async () => {
+          if (!documentId && !pageId) return;
+          if (loading) return;
           await handleSaveAndAnalyze();
         }}
+        style={loading ? { background: "#fa6e70" } : {}}
       >
         {!loading ? <MdOutlineAnalytics /> : <ClockLoader size={10} />}
         Save & Analyze
