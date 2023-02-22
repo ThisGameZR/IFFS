@@ -3,7 +3,6 @@ import { useUser } from "context/UserProvider";
 import { fetchGetAnalyze } from "fetch/analyze";
 import { useRouter } from "next/router";
 import React from "react";
-import { useQuery, useQueryClient } from "react-query";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { Prompt } from "models/Completion";
@@ -21,22 +20,9 @@ const CHART_COLORS = ["#8779F7", "#4793FF", "#FF768C", "#FFAD71", "#48DCBF", "#D
 
 export default function Analytic() {
   const router = useRouter();
-  const queryClient = useQueryClient();
 
   const { id: projectId } = router.query;
   const { documentId, pageId, toggleAnalytic } = useContainer();
-
-  if (!documentId && !pageId)
-    return (
-      <h1
-        style={{
-          padding: "4rem 4rem",
-          fontSize: "1.3rem",
-        }}
-      >
-        Select the page first
-      </h1>
-    );
 
   const { currentUser } = useUser();
 
@@ -150,6 +136,18 @@ export default function Analytic() {
     ).toFixed(2) + "%";
 
   if (!toggleAnalytic) return <></>;
+
+  if (!documentId && !pageId)
+    return (
+      <h1
+        style={{
+          padding: "4rem 4rem",
+          fontSize: "1.3rem",
+        }}
+      >
+        Select the page first
+      </h1>
+    );
 
   if (isAnalyzeLoading) return <ClockLoader />;
   return (

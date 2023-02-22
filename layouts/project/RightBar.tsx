@@ -5,7 +5,7 @@ import { fetchGetAnalyze } from "fetch/analyze";
 import { Analyze } from "models/Project";
 import { useRouter } from "next/router";
 import React from "react";
-import { useQuery } from "react-query";
+import { ClockLoader } from "react-spinners";
 
 export default function RightBar() {
   const router = useRouter();
@@ -28,16 +28,21 @@ export default function RightBar() {
   return (
     <div className="project__layout">
       <div className="rightbar">
-        {analyze?.issues.map((issue) => {
-          return (
-            <SuggestionCard
-              issue={issue.issue}
-              suggestion={issue.suggestion}
-              sentiment={issue.sentiment}
-              type={issue.type}
-            />
-          );
-        })}
+        {!isAnalyzeLoading ? (
+          analyze?.issues.map((issue, i) => {
+            return (
+              <SuggestionCard
+                key={issue.issue + i}
+                issue={issue.issue}
+                suggestion={issue.suggestion}
+                sentiment={issue.sentiment}
+                type={issue.type}
+              />
+            );
+          })
+        ) : (
+          <ClockLoader></ClockLoader>
+        )}
       </div>
     </div>
   );

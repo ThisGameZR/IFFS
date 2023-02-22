@@ -12,7 +12,7 @@ export default function Leftbar({ project }: { project: Project }) {
   const router = useRouter();
 
   const queryClient = useQueryClient();
-  const { setDocumentId } = useContainer();
+  const { setDocumentId, setProject } = useContainer();
 
   const [activeDocument, setActiveDocument] = React.useState(project?.documents?.[0]?.id);
   const [modal, setModal] = React.useState(false);
@@ -42,6 +42,7 @@ export default function Leftbar({ project }: { project: Project }) {
               setActiveDocument={() => {
                 setActiveDocument(document.id);
                 setDocumentId(document.id!);
+                setProject(project);
               }}
               activeDocument={activeDocument}
             />
