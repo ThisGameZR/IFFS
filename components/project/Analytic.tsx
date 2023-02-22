@@ -25,6 +25,19 @@ export default function Analytic() {
 
   const { id: projectId } = router.query;
   const { documentId, pageId, toggleAnalytic } = useContainer();
+
+  if (!documentId && !pageId)
+    return (
+      <h1
+        style={{
+          padding: "4rem 4rem",
+          fontSize: "1.3rem",
+        }}
+      >
+        Select the page first
+      </h1>
+    );
+
   const { currentUser } = useUser();
 
   const [analyzes, setAnalyzes] = React.useState<Analyze>();
