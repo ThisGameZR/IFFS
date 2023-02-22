@@ -8,23 +8,29 @@ import React from "react";
 import { AiOutlineFileText } from "react-icons/ai";
 import { useQueryClient } from "react-query";
 
-export default function ProjectPage({ page, onClick, active }: { page: Page; onClick: () => void; active: boolean }) {
+export default function ProjectPage({
+  page,
+  onClick,
+  active,
+  documentId,
+  pageId,
+}: {
+  page: Page;
+  onClick: () => void;
+  active: boolean;
+  documentId: string;
+  pageId: string;
+}) {
   const router = useRouter();
   const queryClient = useQueryClient();
 
-  const { id: projectId, document: documentId, page: pageId } = router.query;
+  const { id: projectId } = router.query;
   const { currentUser } = useUser();
 
   const [openEdit, setOpenEdit] = React.useState(false);
   const [editInput, setEditInput] = React.useState(page?.name);
   const editPageHandler = () => {
-    fetchUpdatePage(
-      currentUser?.id as string,
-      projectId as string,
-      documentId as string,
-      pageId as string,
-      editInput
-    ).then(() => {
+    fetchUpdatePage(currentUser?.id as string, projectId as string, documentId, pageId, editInput).then(() => {
       queryClient.invalidateQueries("projects");
       setOpenEdit(false);
     });
@@ -40,7 +46,7 @@ export default function ProjectPage({ page, onClick, active }: { page: Page; onC
   return (
     <>
       <div className={(active ? "active" : "") + " project-page"}>
-        <div className="page-name" onClick={onClick}>
+        <div className="page-name" onClick={() => onClick()}>
           <AiOutlineFileText /> {page.name}
         </div>
         <SimpleMenu onEdit={() => setOpenEdit(true)} onDelete={() => setOpenDelete(true)} />

@@ -42,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         issues.map(async (i: any) => {
           let sentiment = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `prompt:${i} Return sentiment as <Positive || Neutral || Negative> only do not include any thing other than this`,
+            prompt: `prompt:${i} Return sentiment as <Positive || Negative> only do not include any thing other than this`,
             max_tokens: 1000,
             temperature: 0,
           });
@@ -103,7 +103,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       return res.status(200).send(analyze);
     } catch (e: any) {
       console.log(e);
-      return res.status(400).send("AI error: " + JSON.stringify(e));
+      return res.status(400).send("Something went wrong with AI, please try again");
     }
   }
   if (req.method === "PUT") {

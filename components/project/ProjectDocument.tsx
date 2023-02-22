@@ -86,18 +86,16 @@ export default function ProjectDocument({
                 <ProjectPage
                   key={page.id}
                   page={page}
+                  documentId={document.id!}
+                  pageId={page.id!}
                   onClick={() => {
                     setActiveDocument();
                     setActivePage(page.id);
                     setPageId(page.id!);
-                    // get current route
-                    const currentRoute = router.pathname;
-                    // get current query
-                    const currentQuery = router.query;
-                    // append query with document id and page id
-                    const newQuery = { ...currentQuery, document: document.id, page: page.id };
-                    // push new route
-                    router.push({ pathname: currentRoute, query: newQuery });
+                    // const currentRoute = router.pathname;
+                    // const currentQuery = router.query;
+                    // const newQuery = { ...currentQuery, document: document.id, page: page.id };
+                    // router.push({ pathname: currentRoute, query: newQuery });
                   }}
                   active={activePage === page.id && activeDocument === document.id}
                 />

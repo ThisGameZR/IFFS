@@ -1,17 +1,30 @@
 import React from "react";
 
-export default function IdentifyFeedback({ type, text }: { type: "Positive" | "Negative" | "Neutral"; text?: string }) {
+export default function IdentifyFeedback({
+  sentiment,
+  text,
+  type,
+}: {
+  sentiment: "Positive" | "Negative";
+  text?: string;
+  type: "UX" | "UI";
+}) {
   return (
     <div className="identify-feedback">
-      <div className={"badge " + type}></div>
+      <div className={"badge " + sentiment}></div>
       <div
         className={
           "title " +
-          (type == "Positive" ? "positive-feedback" : type == "Negative" ? "negative-feedback" : "neutral-feedback")
+          (sentiment == "Positive"
+            ? "positive-feedback"
+            : sentiment == "Negative"
+            ? "negative-feedback"
+            : "neutral-feedback")
         }
       >
-        {type}
+        {sentiment}
       </div>
+      <div className={"type " + type}>{type}</div>
       <div className="text">{text}</div>
     </div>
   );

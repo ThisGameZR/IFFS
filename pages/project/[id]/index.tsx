@@ -15,6 +15,7 @@ export default function index() {
   const { currentUser } = useUser();
   const { data: projects } = useQuery("projects", () => fetchGetProjects(currentUser?.id!), {
     enabled: !!currentUser,
+    useErrorBoundary: true,
   });
   const project = projects?.find((project) => project.id === id);
   const { document, page } = router.query;
