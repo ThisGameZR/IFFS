@@ -8,33 +8,63 @@ export default function SimpleMenu({
   onSave,
   onAdd,
   onDelete,
+  display,
 }: {
   onEdit?: () => void;
   onSave?: () => void;
   onAdd?: () => void;
   onDelete?: () => void;
+  display: boolean;
 }) {
   return (
     <>
       <div className="simple-menu">
         {onEdit && (
-          <div className="simple-menu-item color-edit" onClick={onEdit} title="Rename">
+          <div
+            className="simple-menu-item"
+            onClick={onEdit}
+            title="Rename"
+            style={{
+              display: display ? "block" : "none",
+            }}
+          >
             <AiOutlineEdit />
           </div>
         )}
         {onSave && (
-          <div className="simple-menu-item color-save" onClick={onSave} title="Save">
+          <div
+            className="simple-menu-item"
+            onClick={onSave}
+            title="Save"
+            style={{
+              display: display ? "block" : "none",
+            }}
+          >
             <FiSave />
           </div>
         )}
-        {onAdd && (
-          <div className="simple-menu-item color-add" onClick={onAdd} title="Create">
-            <AiOutlinePlus />
+        {onDelete && (
+          <div
+            className="simple-menu-item "
+            onClick={onDelete}
+            title="Delete"
+            style={{
+              display: display ? "block" : "none",
+            }}
+          >
+            <BsTrash />
           </div>
         )}
-        {onDelete && (
-          <div className="simple-menu-item color-delete" onClick={onDelete} title="Delete">
-            <BsTrash />
+        {onAdd && (
+          <div
+            className="simple-menu-item "
+            onClick={onAdd}
+            title="Create"
+            style={{
+              display: display ? "block" : "none",
+            }}
+          >
+            <AiOutlinePlus />
           </div>
         )}
       </div>

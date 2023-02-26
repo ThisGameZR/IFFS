@@ -63,7 +63,7 @@ export default function landing() {
           </div>
         </div>
       </div>
-      <Modal title="Enter new project name" open={open} setOpen={setOpen}>
+      <Modal title="Enter new project name" open={open} setOpen={setOpen} apply={() => handleNewProject()}>
         <input
           type="text"
           autoFocus={open}

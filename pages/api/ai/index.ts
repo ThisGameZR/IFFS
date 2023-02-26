@@ -42,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         issues.map(async (i: any) => {
           let sentiment = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `prompt:${i} Return sentiment as <Positive || Negative> only do not include any thing other than this`,
+            prompt: `prompt:${i} Return sentiment as <Positive || Negative>`,
             max_tokens: 1000,
             temperature: 0,
           });
@@ -83,10 +83,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
               : sentiment.data.choices[0].text?.includes("positive")
               ? "Positive"
               : "Negative";
+          const ty = type.data.choices[0].text?.includes("UX") ? "UX" : "UI";
           arrays.push({
             issue: i,
             sentiment: sen,
-            type: type.data.choices[0].text,
+            type: ty,
             label: label.data.choices[0].text,
             suggestion: suggestion.data.choices[0].text,
           });

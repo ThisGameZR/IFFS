@@ -49,7 +49,7 @@ export default function Leftbar({ project }: { project: Project }) {
           ))}
         </div>
       </div>
-      <Modal open={modal} setOpen={setModal} title="New Document">
+      <Modal open={modal} setOpen={setModal} title="New Document" apply={() => newDocumentHandler()}>
         <input
           type="text"
           autoFocus={modal}
