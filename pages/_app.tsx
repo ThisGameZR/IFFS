@@ -13,7 +13,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
   });
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       <Toaster />
       <SessionProvider session={session}>
         <UserProvider>

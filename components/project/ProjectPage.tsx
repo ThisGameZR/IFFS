@@ -36,6 +36,8 @@ export default function ProjectPage({
     });
   };
 
+  const [displayMenu, setDisplayMenu] = React.useState(false);
+
   const [openDelete, setOpenDelete] = React.useState(false);
   const deletePageHandler = () => {
     fetchDeletePage(currentUser?.id as string, projectId as string, documentId as string, pageId as string).then(() => {
@@ -45,17 +47,21 @@ export default function ProjectPage({
   };
   return (
     <>
-      <div className={(active ? "active" : "") + " project-page"}>
+      <div
+        className={(active ? "active" : "") + " project-page"}
+        onMouseOver={() => setDisplayMenu(true)}
+        onMouseLeave={() => setDisplayMenu(false)}
+      >
         <div className="page-name" onClick={() => onClick()}>
           <AiOutlineFileText /> {page.name}
         </div>
-        <SimpleMenu onEdit={() => setOpenEdit(true)} onDelete={() => setOpenDelete(true)} />
+        <SimpleMenu onEdit={() => setOpenEdit(true)} onDelete={() => setOpenDelete(true)} display={displayMenu} />
       </div>
-      <Modal open={openEdit} setOpen={setOpenEdit} title="Edit Document Name">
+      <Modal open={openEdit} setOpen={setOpenEdit} title="Edit Page Name" apply={() => editPageHandler()}>
         <input
           type="text"
           autoFocus={openEdit}
-          placeholder="Press enter to rename document"
+          placeholder="Press enter to rename the page"
           value={editInput}
           onChange={(e) => setEditInput(e.target.value)}
           onKeyDown={(e) => {
@@ -65,13 +71,13 @@ export default function ProjectPage({
           }}
         />
       </Modal>
-      <Modal open={openDelete} setOpen={setOpenDelete} title="All pages will be gone?">
+      <Modal open={openDelete} setOpen={setOpenDelete} title="All content will be gone?">
         <div className="modal-delete">
-          <button className="btn btn-danger" onClick={() => deletePageHandler()}>
-            Delete
-          </button>
           <button className="btn btn-secondary" onClick={() => setOpenDelete(false)}>
             Cancel
+          </button>
+          <button className="btn btn-danger" onClick={() => deletePageHandler()}>
+            Delete
           </button>
         </div>
       </Modal>

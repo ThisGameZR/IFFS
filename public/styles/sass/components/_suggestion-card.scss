@@ -23,13 +23,19 @@
       gap: rem(5px);
       align-self: flex-end;
       .badge {
-        padding: 0.5rem;
         border-radius: rem(5px);
+        width: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         &.Positive {
           background-color: #dbf4e7;
         }
         &.Negative {
           background-color: #e7dcff;
+        }
+        &.Neutral {
+          background-color: #dcecff;
         }
       }
       .type {
@@ -60,6 +66,14 @@
     p {
       font-size: 1rem;
       margin-bottom: rem(7px);
+    }
+    ol {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      list-style: decimal;
+      li {
+        margin-bottom: rem(5px);
+      }
     }
   }
 }

@@ -10,8 +10,7 @@ import { ClockLoader } from "react-spinners";
 import IdentifyBox from "./analytic/IdentifyBox";
 import { TbRefreshAlert } from "react-icons/tb";
 import { AiOutlineSmile } from "react-icons/ai";
-import { MdOutlineMoodBad } from "react-icons/md";
-import { RiChatHeartLine } from "react-icons/ri";
+import { MdOutlineMoodBad, MdOutlineAssistant } from "react-icons/md";
 import IdentifyFeedback from "./analytic/IdentifyFeedback";
 import { Analyze, Issue } from "models/Project";
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -22,7 +21,7 @@ export default function Analytic() {
   const router = useRouter();
 
   const { id: projectId } = router.query;
-  const { documentId, pageId, toggleAnalytic } = useContainer();
+  const { documentId, pageId, toggleAnalytic, forceUpdate } = useContainer();
 
   const { currentUser } = useUser();
 
@@ -37,7 +36,7 @@ export default function Analytic() {
         setIsAnalyzeLoading(false);
       }
     );
-  }, [pageId, documentId]);
+  }, [pageId, documentId, forceUpdate]);
 
   const problemCounters = analyzes?.issues.map((p) => {
     return {
@@ -114,6 +113,13 @@ export default function Analytic() {
       100
     ).toFixed(2) + "%";
 
+  const UXNeutral =
+    (
+      (processedData.filter((p) => p.type === "UX").filter((p) => p.sentiment === "Neutral").length /
+        processedData.filter((p) => p.type === "UX").length) *
+      100
+    ).toFixed(2) + "%";
+
   const UXNegative =
     (
       (processedData.filter((p) => p.type === "UX").filter((p) => p.sentiment === "Negative").length /
@@ -124,6 +130,13 @@ export default function Analytic() {
   const UIPositive =
     (
       (processedData.filter((p) => p.type === "UI").filter((p) => p.sentiment === "Positive").length /
+        processedData.filter((p) => p.type === "UI").length) *
+      100
+    ).toFixed(2) + "%";
+
+  const UINeutral =
+    (
+      (processedData.filter((p) => p.type === "UI").filter((p) => p.sentiment === "Neutral").length /
         processedData.filter((p) => p.type === "UI").length) *
       100
     ).toFixed(2) + "%";
@@ -189,6 +202,12 @@ export default function Analytic() {
               ></div>
               <div
                 style={{
+                  width: UXNeutral,
+                }}
+                className="neutral"
+              ></div>
+              <div
+                style={{
                   width: UXNegative,
                 }}
                 className="negative"
@@ -203,6 +222,12 @@ export default function Analytic() {
                   width: UIPositive,
                 }}
                 className="positive"
+              ></div>
+              <div
+                style={{
+                  width: UINeutral,
+                }}
+                className="neutral"
               ></div>
               <div
                 style={{
@@ -222,6 +247,17 @@ export default function Analytic() {
               <div className="col">
                 <div className="type UI">UI</div>
                 <span>{UIPositive}</span>
+              </div>
+            </div>
+            <div className="neutral row">
+              <div className="badge Neutral">Neutral</div>
+              <div className="col">
+                <div className="type UX">UX</div>
+                <span>{UXNeutral}</span>
+              </div>
+              <div className="col">
+                <div className="type UI">UI</div>
+                <span>{UINeutral}</span>
               </div>
             </div>
             <div className="negative row">
@@ -250,6 +286,11 @@ export default function Analytic() {
             icon={<MdOutlineMoodBad />}
             title="NEGATIVE"
             amount={sentimentProblems(processedData, "Negative")}
+          />
+          <IdentifyBox
+            icon={<MdOutlineAssistant />}
+            title="NEUTRAL"
+            amount={sentimentProblems(processedData, "Neutral")}
           />
         </div>
         <div className="analytic-identify-group-feedback">

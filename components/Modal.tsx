@@ -4,11 +4,15 @@ export default function Modal({
   open,
   setOpen,
   title,
+  cancel,
+  apply,
   children,
 }: {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   title: string;
+  cancel?: () => void;
+  apply?: () => void;
   children: React.ReactNode;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -31,6 +35,16 @@ export default function Modal({
           <h1>{title}</h1>
         </div>
         <div className="details-modal-content">{children}</div>
+        {apply && (
+          <div className="modal-buttons">
+            <button type="button" tabIndex={2} onClick={() => (cancel ? cancel() : setOpen(false))}>
+              Cancel
+            </button>
+            <button type="button" onClick={() => apply()} tabIndex={1}>
+              Apply
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

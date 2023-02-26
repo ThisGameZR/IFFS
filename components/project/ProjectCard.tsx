@@ -40,15 +40,20 @@ export default function ProjectCard({ project }: { project: Project }) {
     <>
       <Modal open={openDelete} setOpen={setOpenDelete} title="All pages will be gone?">
         <div className="modal-delete">
-          <button className="btn btn-danger" onClick={() => deleteProjectHandler()}>
-            Delete
-          </button>
           <button className="btn btn-secondary" onClick={() => setOpenDelete(false)}>
             Cancel
           </button>
+          <button className="btn btn-danger" onClick={() => deleteProjectHandler()}>
+            Delete
+          </button>
         </div>
       </Modal>
-      <Modal open={openEdit} setOpen={() => setOpenEdit(false)} title="Rename project">
+      <Modal
+        open={openEdit}
+        setOpen={() => setOpenEdit(false)}
+        title="Rename project"
+        apply={() => editProjectHandler()}
+      >
         <input
           type="text"
           autoFocus={openEdit}
@@ -74,7 +79,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           >
             {project.name}
           </h1>
-          <SimpleMenu onEdit={() => setOpenEdit(true)} onDelete={() => setOpenDelete(true)} />
+          <SimpleMenu onEdit={() => setOpenEdit(true)} onDelete={() => setOpenDelete(true)} display />
         </div>
       </div>
     </>

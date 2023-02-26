@@ -57,6 +57,8 @@ export default function ProjectDocument({
     });
   };
 
+  const [displayMenu, setDisplayMenu] = React.useState(false);
+
   const [openDelete, setOpenDelete] = React.useState(false);
   const deleteDocumentHandler = () => {
     fetchDeleteDocument(currentUser?.id as string, projectId as string, document.id as string).then((res) => {
@@ -68,7 +70,11 @@ export default function ProjectDocument({
   return (
     <>
       <div className="project-document">
-        <div className="project-document-wrap">
+        <div
+          className="project-document-wrap"
+          onMouseOver={() => setDisplayMenu(true)}
+          onMouseLeave={() => setDisplayMenu(false)}
+        >
           <div className="document-toggle" onClick={() => setDisplay(!display)}>
             {display ? <FaFolderOpen /> : <FaFolderMinus />}
             <h1>{document?.name}</h1>
@@ -77,6 +83,7 @@ export default function ProjectDocument({
             onEdit={() => setOpenEdit(true)}
             onAdd={() => setOpenAdd(true)}
             onDelete={() => setOpenDelete(true)}
+            display={displayMenu}
           />
         </div>
         {display ? (
@@ -106,7 +113,7 @@ export default function ProjectDocument({
           <></>
         )}
       </div>
-      <Modal open={openEdit} setOpen={setOpenEdit} title="Edit Document Name">
+      <Modal open={openEdit} setOpen={setOpenEdit} title="Edit Document Name" apply={() => editDocumentNameHandler()}>
         <input
           type="text"
           autoFocus={openEdit}
@@ -120,7 +127,7 @@ export default function ProjectDocument({
           }}
         />
       </Modal>
-      <Modal open={openAdd} setOpen={setOpenAdd} title="New Page">
+      <Modal open={openAdd} setOpen={setOpenAdd} title="New Page" apply={() => addPageHandler()}>
         <input
           type="text"
           autoFocus={openAdd}
@@ -136,11 +143,11 @@ export default function ProjectDocument({
       </Modal>
       <Modal open={openDelete} setOpen={setOpenDelete} title="All pages will be gone?">
         <div className="modal-delete">
-          <button className="btn btn-danger" onClick={() => deleteDocumentHandler()}>
-            Delete
-          </button>
           <button className="btn btn-secondary" onClick={() => setOpenDelete(false)}>
             Cancel
+          </button>
+          <button className="btn btn-danger" onClick={() => deleteDocumentHandler()}>
+            Delete
           </button>
         </div>
       </Modal>

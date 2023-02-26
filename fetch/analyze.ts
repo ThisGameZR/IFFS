@@ -32,7 +32,7 @@ export async function fetchGetAnalyze(userId: string, projectId: string, documen
     })
     .then((res) => {
       //@ts-ignore
-      const x = res.data.sort((a, b) => a.usage.created - b.usage.created)?.[0];
+      const x = res.data.sort((a, b) => b.usage.created.seconds - a.usage.created.seconds)?.[0];
       return x;
     });
 }

@@ -5,7 +5,7 @@ export default function IdentifyFeedback({
   text,
   type,
 }: {
-  sentiment: "Positive" | "Negative";
+  sentiment: "Positive" | "Negative" | "Neutral";
   text?: string;
   type: "UX" | "UI";
 }) {

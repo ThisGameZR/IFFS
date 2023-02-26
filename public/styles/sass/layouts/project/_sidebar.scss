@@ -8,9 +8,8 @@
     flex-direction: column;
     gap: rem(16px);
     padding-top: rem(16px);
-    padding-left: rem(19px);
-    padding-right: rem(19px);
     .add-project {
+      padding-inline: rem(16px);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -32,5 +31,6 @@
     gap: rem(36px);
     align-items: center;
     padding: 2rem 0;
+    margin-bottom: 4rem;
   }
 }

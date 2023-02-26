@@ -10,7 +10,7 @@ import { ClockLoader } from "react-spinners";
 export default function RightBar() {
   const router = useRouter();
   const { id: projectId } = router.query;
-  const { documentId, pageId } = useContainer();
+  const { documentId, pageId, forceUpdate } = useContainer();
   const { currentUser } = useUser();
   const [analyze, setAnalyze] = React.useState<Analyze>();
   const [isAnalyzeLoading, setIsAnalyzeLoading] = React.useState(false);
@@ -23,7 +23,7 @@ export default function RightBar() {
         setIsAnalyzeLoading(false);
       }
     );
-  }, [pageId, documentId]);
+  }, [pageId, documentId, forceUpdate]);
 
   return (
     <div className="project__layout">

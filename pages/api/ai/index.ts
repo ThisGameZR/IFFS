@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     try {
       let query = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `prompt:${prompt}\n Identify sentences which imply issue and return it in array`,
+        prompt: `prompt:${prompt}\n Identify sentences which imply issue and return it as an array`,
         max_tokens: 3000,
         temperature: 0,
       });
@@ -36,13 +36,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         //@ts-ignore
         thb: (query.data.usage?.total_tokens / 1000) * 0.02 * 35,
       };
-      const issues = JSON.parse(query.data.choices[0].text!);
+      const issues = query.data.choices[0]
+        .text!.replace(/\[|\]/g, "")
+        .replaceAll("'", "")
+        .replace(/(\r\n|\n|\r)/gm, "")
+        .trim()
+        .split(",");
       let arrays: any[] = [];
       await Promise.all(
         issues.map(async (i: any) => {
           let sentiment = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `prompt:${i} Return sentiment as <Positive || Negative> only do not include any thing other than this`,
+            prompt: `prompt:${i} Return sentiment as <Positive || Negative>`,
             max_tokens: 1000,
             temperature: 0,
           });
@@ -60,9 +65,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
           });
           let suggestion = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `prompt:${i} Return any suggestion you could think of (not too long)`,
-            max_tokens: 2000,
-            temperature: 0.7,
+            prompt: `How to improve this or any suggestion: ${i}`,
+            max_tokens: 3000,
+            temperature: 0.8,
           });
           usage = {
             ...usage,
@@ -77,10 +82,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
               //@ts-ignore
               (suggestion.data.usage?.total_tokens / 1000) * 0.02 * 35,
           };
+          const sen =
+            sentiment.data.choices[0].text?.includes("positive") && sentiment.data.choices[0].text?.includes("negative")
+              ? "Neutral"
+              : sentiment.data.choices[0].text?.includes("positive")
+              ? "Positive"
+              : "Negative";
+          const ty = type.data.choices[0].text?.includes("UX") ? "UX" : "UI";
           arrays.push({
             issue: i,
-            sentiment: sentiment.data.choices[0].text!,
-            type: type.data.choices[0].text,
+            sentiment: sen,
+            type: ty,
             label: label.data.choices[0].text,
             suggestion: suggestion.data.choices[0].text,
           });
