@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { toast } from "react-hot-toast";
 import { MdOutlineAnalytics } from "react-icons/md";
-import { ClockLoader } from "react-spinners";
+import { BarLoader, ClockLoader } from "react-spinners";
 export default function Document() {
   const { toggleDocument, documentId, pageId } = useContainer();
 
@@ -14,7 +14,7 @@ export default function Document() {
   const router = useRouter();
   const { id } = router.query;
   const { currentUser } = useUser();
-  const { project } = useContainer();
+  const { project, setForceUpdate } = useContainer();
   const currentDocument = project?.documents?.find((doc) => doc.id === documentId);
   const currentPage = currentDocument?.pages?.find((p) => p.id === pageId);
   React.useEffect(() => {
@@ -34,6 +34,7 @@ export default function Document() {
       toast.promise(fetchPostAnalyze(text, userId, projectId, documentId, pageId), {
         loading: "Analyzing your data...",
         success: () => {
+          setForceUpdate((p) => p + 1);
           setLoading(false);
           return "Successfully analyzing your data";
         },
@@ -54,6 +55,24 @@ export default function Document() {
 
   return (
     <>
+      {loading && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 9999,
+          }}
+        >
+          <BarLoader />
+        </div>
+      )}
       <div
         className="save-and-analyze"
         onClick={async () => {
@@ -61,7 +80,6 @@ export default function Document() {
           if (loading) return;
           await handleSaveAndAnalyze();
         }}
-        style={loading ? { background: "#fa6e70" } : {}}
       >
         {!loading ? <MdOutlineAnalytics /> : <ClockLoader size={10} />}
         Save & Analyze

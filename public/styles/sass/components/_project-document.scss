@@ -3,9 +3,12 @@
   display: flex;
   flex-direction: column;
   &-wrap {
+    padding-inline: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: rem(10px);
+    padding-bottom: rem(10px);
     .document-toggle {
       display: flex;
       gap: rem(5px);

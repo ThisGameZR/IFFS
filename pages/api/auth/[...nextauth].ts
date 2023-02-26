@@ -9,10 +9,13 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
-  callbacks: {
-    async redirect({ url, baseUrl }: { url: string; baseUrl: string }): Promise<string> {
-      return Promise.resolve(baseUrl + "/project");
-    },
-  },
+  // callbacks: {
+  //   async redirect({ url, baseUrl }: { url: string; baseUrl: string }): Promise<string> {
+  //     return Promise.resolve(baseUrl + "/project");
+  //   },
+  // },
+  // pages: {
+  //   signIn: "/auth/signin",
+  // },
   secret: process.env.NEXTAUTH_SECRET as string,
 });

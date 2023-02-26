@@ -14,9 +14,9 @@
     &.Negative {
       background-color: #8779f7;
     }
-    // &.Neutral {
-    //   background-color: $primary-color;
-    // }
+    &.Neutral {
+      background-color: #68d2ff;
+    }
   }
   .title {
     width: 8.5%;
@@ -30,9 +30,9 @@
     &.negative-feedback {
       background-color: #e7dcff;
     }
-    // &.neutral-feedback {
-    //   background-color: rgba($primary-color, 0.2);
-    // }
+    &.neutral-feedback {
+      background-color: #dcecff;
+    }
   }
   .type {
     padding: 0.25rem;

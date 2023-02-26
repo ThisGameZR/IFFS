@@ -12,6 +12,8 @@ const ContainerContext = React.createContext<{
   setPageId: React.Dispatch<React.SetStateAction<string>>;
   project: Project | null;
   setProject: React.Dispatch<React.SetStateAction<Project | null>>;
+  setForceUpdate: React.Dispatch<React.SetStateAction<number>>;
+  forceUpdate: number;
 }>({
   toggleDocument: false,
   setToggleDocument: () => {},
@@ -23,6 +25,8 @@ const ContainerContext = React.createContext<{
   setPageId: () => {},
   project: null,
   setProject: () => {},
+  setForceUpdate: () => {},
+  forceUpdate: 0,
 });
 
 export const useContainer = () => React.useContext(ContainerContext);
@@ -33,6 +37,7 @@ const ContainerProvider = ({ children }: { children: React.ReactNode }) => {
   const [documentId, setDocumentId] = React.useState("");
   const [pageId, setPageId] = React.useState("");
   const [project, setProject] = React.useState<Project | null>(null);
+  const [forceUpdate, setForceUpdate] = React.useState(0);
   const value = React.useMemo(() => {
     return {
       toggleDocument,
@@ -45,6 +50,8 @@ const ContainerProvider = ({ children }: { children: React.ReactNode }) => {
       setPageId,
       project,
       setProject,
+      forceUpdate,
+      setForceUpdate,
     };
   }, [
     toggleDocument,
@@ -57,6 +64,8 @@ const ContainerProvider = ({ children }: { children: React.ReactNode }) => {
     setPageId,
     project,
     setProject,
+    forceUpdate,
+    setForceUpdate,
   ]);
   return <ContainerContext.Provider value={value}>{children}</ContainerContext.Provider>;
 };

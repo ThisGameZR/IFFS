@@ -2,21 +2,23 @@
   display: flex;
   height: rem(32px);
   align-items: center;
-  margin-left: rem(42px);
+  padding-left: rem(46px);
+  padding-top: rem(20px);
+  padding-bottom: rem(20px);
   gap: rem(5px);
   cursor: pointer;
-
   &.active {
-    color: rgb(13, 60, 218);
+    background: #dcecff;
+  }
+  &:hover {
+    border-top: 1px solid #4793ff;
+    border-bottom: 1px solid #4793ff;
   }
   &-wrap {
     padding-top: rem(10px);
     .page-name {
       display: flex;
       gap: rem(5px);
-      &:hover {
-        color: $primary-color;
-      }
     }
   }
 }
