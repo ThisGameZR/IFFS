@@ -23,13 +23,19 @@
       gap: rem(5px);
       align-self: flex-end;
       .badge {
-        padding: 0.5rem;
         border-radius: rem(5px);
+        width: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         &.Positive {
           background-color: #dbf4e7;
         }
         &.Negative {
           background-color: #e7dcff;
+        }
+        &.Neutral {
+          background-color: #dcecff;
         }
       }
       .type {

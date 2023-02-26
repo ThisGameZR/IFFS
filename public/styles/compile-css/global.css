@@ -629,6 +629,9 @@ html {
 .identify-feedback .badge.Negative {
   background-color: #8779f7;
 }
+.identify-feedback .badge.Neutral {
+  background-color: #68d2ff;
+}
 .identify-feedback .title {
   width: 8.5%;
   padding: 0.25rem 0;
@@ -641,6 +644,9 @@ html {
 }
 .identify-feedback .title.negative-feedback {
   background-color: #e7dcff;
+}
+.identify-feedback .title.neutral-feedback {
+  background-color: #dcecff;
 }
 .identify-feedback .type {
   padding: 0.25rem;
@@ -687,14 +693,20 @@ html {
   align-self: flex-end;
 }
 .suggestion-card .problem .badges .badge {
-  padding: 0.5rem;
   border-radius: 0.3125rem;
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .suggestion-card .problem .badges .badge.Positive {
   background-color: #dbf4e7;
 }
 .suggestion-card .problem .badges .badge.Negative {
   background-color: #e7dcff;
+}
+.suggestion-card .problem .badges .badge.Neutral {
+  background-color: #dcecff;
 }
 .suggestion-card .problem .badges .type {
   padding: 0.5rem;
@@ -988,14 +1000,16 @@ html {
 .analytic-header-feedback > div .bar {
   display: flex;
   width: 82%;
+  height: 30px;
 }
 .analytic-header-feedback > div .bar .positive {
-  height: 30px;
   background: #48dcbf;
 }
 .analytic-header-feedback > div .bar .negative {
-  height: 30px;
   background: #8779f7;
+}
+.analytic-header-feedback > div .bar .neutral {
+  background: #94cef8;
 }
 .analytic-header-feedback .legend {
   display: flex;
@@ -1008,10 +1022,11 @@ html {
   gap: 2rem;
 }
 .analytic-header-feedback .legend .row .badge {
-  width: 18%;
+  width: 20%;
   text-align: center;
 }
 .analytic-header-feedback .legend .row .col {
+  width: 35%;
   display: flex;
   align-items: center;
   gap: 0.4375rem;
@@ -1026,6 +1041,9 @@ html {
 }
 .analytic-header-feedback .legend .badge.Negative {
   background-color: #e7dcff;
+}
+.analytic-header-feedback .legend .badge.Neutral {
+  background-color: #dcecff;
 }
 .analytic-header-feedback .legend .type {
   padding: 0.5rem;

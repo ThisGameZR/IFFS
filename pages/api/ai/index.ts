@@ -77,9 +77,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
               //@ts-ignore
               (suggestion.data.usage?.total_tokens / 1000) * 0.02 * 35,
           };
+          const sen =
+            sentiment.data.choices[0].text?.includes("positive") && sentiment.data.choices[0].text?.includes("negative")
+              ? "Neutral"
+              : sentiment.data.choices[0].text?.includes("positive")
+              ? "Positive"
+              : "Negative";
           arrays.push({
             issue: i,
-            sentiment: sentiment.data.choices[0].text!,
+            sentiment: sen,
             type: type.data.choices[0].text,
             label: label.data.choices[0].text,
             suggestion: suggestion.data.choices[0].text,

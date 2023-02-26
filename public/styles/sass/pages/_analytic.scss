@@ -46,13 +46,15 @@
         .bar {
           display: flex;
           width: 82%;
+          height: 30px;
           .positive {
-            height: 30px;
             background: #48dcbf;
           }
           .negative {
-            height: 30px;
             background: #8779f7;
+          }
+          .neutral {
+            background: #94cef8;
           }
         }
       }
@@ -65,10 +67,11 @@
           align-items: center;
           gap: rem(32px);
           .badge {
-            width: 18%;
+            width: 20%;
             text-align: center;
           }
           .col {
+            width: 35%;
             display: flex;
             align-items: center;
             gap: rem(7px);
@@ -83,6 +86,9 @@
           }
           &.Negative {
             background-color: #e7dcff;
+          }
+          &.Neutral {
+            background-color: #dcecff;
           }
         }
         .type {
