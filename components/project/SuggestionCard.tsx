@@ -11,6 +11,11 @@ export default function SuggestionCard({
   sentiment: "Positive" | "Negative";
   type: "UX" | "UI";
 }) {
+  const arr =
+    suggestion
+      .split(/\d+\. /)
+      .filter(Boolean)
+      .map((item) => item.trim()) || [];
   return (
     <div className="suggestion-card">
       <div className="problem">
@@ -23,7 +28,15 @@ export default function SuggestionCard({
       </div>
       <div className="suggestion">
         <h4>Our Suggestion</h4>
-        <p>{suggestion}</p>
+        {suggestion.includes("1.") ? (
+          <ol>
+            {arr.map((a) => {
+              return <li>{a}</li>;
+            })}
+          </ol>
+        ) : (
+          <p>{suggestion}</p>
+        )}
       </div>
     </div>
   );

@@ -67,5 +67,13 @@
       font-size: 1rem;
       margin-bottom: rem(7px);
     }
+    ol {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      list-style: decimal;
+      li {
+        margin-bottom: rem(5px);
+      }
+    }
   }
 }

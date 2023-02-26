@@ -14,7 +14,7 @@ export default function Document() {
   const router = useRouter();
   const { id } = router.query;
   const { currentUser } = useUser();
-  const { project } = useContainer();
+  const { project, setForceUpdate } = useContainer();
   const currentDocument = project?.documents?.find((doc) => doc.id === documentId);
   const currentPage = currentDocument?.pages?.find((p) => p.id === pageId);
   React.useEffect(() => {
@@ -34,6 +34,7 @@ export default function Document() {
       toast.promise(fetchPostAnalyze(text, userId, projectId, documentId, pageId), {
         loading: "Analyzing your data...",
         success: () => {
+          setForceUpdate((p) => p + 1);
           setLoading(false);
           return "Successfully analyzing your data";
         },

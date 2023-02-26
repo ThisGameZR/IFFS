@@ -65,9 +65,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
           });
           let suggestion = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `Imagine you are professional designer, how would you improve this: ${i}`,
+            prompt: `How to improve this or any suggestion: ${i}`,
             max_tokens: 3000,
-            temperature: 1,
+            temperature: 0.8,
           });
           usage = {
             ...usage,

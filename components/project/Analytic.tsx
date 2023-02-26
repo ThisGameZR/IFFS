@@ -21,7 +21,7 @@ export default function Analytic() {
   const router = useRouter();
 
   const { id: projectId } = router.query;
-  const { documentId, pageId, toggleAnalytic } = useContainer();
+  const { documentId, pageId, toggleAnalytic, forceUpdate } = useContainer();
 
   const { currentUser } = useUser();
 
@@ -36,7 +36,7 @@ export default function Analytic() {
         setIsAnalyzeLoading(false);
       }
     );
-  }, [pageId, documentId]);
+  }, [pageId, documentId, forceUpdate]);
 
   const problemCounters = analyzes?.issues.map((p) => {
     return {

@@ -762,6 +762,14 @@ html {
   font-size: 1rem;
   margin-bottom: 0.4375rem;
 }
+.suggestion-card .suggestion ol {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  list-style: decimal;
+}
+.suggestion-card .suggestion ol li {
+  margin-bottom: 0.3125rem;
+}
 
 .home {
   display: flex;
