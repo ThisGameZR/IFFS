@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     try {
       let query = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `prompt:${prompt}\n Identify sentences which imply issue and return it in array`,
+        prompt: `prompt:${prompt}\n Identify sentences which imply issue and return it as an array`,
         max_tokens: 3000,
         temperature: 0,
       });
@@ -36,7 +36,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         //@ts-ignore
         thb: (query.data.usage?.total_tokens / 1000) * 0.02 * 35,
       };
-      const issues = JSON.parse(query.data.choices[0].text!);
+      const issues = query.data.choices[0]
+        .text!.replace(/\[|\]/g, "")
+        .replaceAll("'", "")
+        .replace(/(\r\n|\n|\r)/gm, "")
+        .trim()
+        .split(",");
       let arrays: any[] = [];
       await Promise.all(
         issues.map(async (i: any) => {
@@ -60,9 +65,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
           });
           let suggestion = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `prompt:${i} Return any suggestion you could think of (not too long)`,
-            max_tokens: 2000,
-            temperature: 0.7,
+            prompt: `Imagine you are professional designer, how would you improve this: ${i}`,
+            max_tokens: 3000,
+            temperature: 1,
           });
           usage = {
             ...usage,
