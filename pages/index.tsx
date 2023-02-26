@@ -4,10 +4,33 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { sleep } from "utils/sleep";
+import { useUser } from "context/UserProvider";
 
 export default function Home() {
   const { data: session, status } = useSession();
+  const { currentUser } = useUser();
   const router = useRouter();
+  function popupCenter(url: string, title: string) {
+    const dualScreenLeft = window.screenLeft ?? window.screenX;
+    const dualScreenTop = window.screenTop ?? window.screenY;
+
+    const width = window.innerWidth ?? document.documentElement.clientWidth ?? screen.width;
+
+    const height = window.innerHeight ?? document.documentElement.clientHeight ?? screen.height;
+
+    const systemZoom = width / window.screen.availWidth;
+
+    const left = (width - 500) / 2 / systemZoom + dualScreenLeft;
+    const top = (height - 550) / 2 / systemZoom + dualScreenTop;
+
+    const newWindow = window.open(
+      url,
+      title,
+      `width=${500 / systemZoom},height=${550 / systemZoom},top=${top},left=${left}`
+    );
+
+    newWindow?.focus();
+  }
   return (
     <>
       <Head>
@@ -19,7 +42,7 @@ export default function Home() {
           <div>
             <button
               onClick={() => {
-                session ? router.push("/project") : signIn();
+                session ? router.push("/project") : popupCenter("/google-signin", "Sign In");
               }}
             >
               Start Project
@@ -27,10 +50,11 @@ export default function Home() {
             {status == "authenticated" && (
               <button
                 onClick={async () => {
-                  toast.loading("Logging out");
-                  await sleep(1000);
-                  await signOut();
-                  toast.success("Successfully logout");
+                  toast.promise(signOut(), {
+                    success: "Successfully logout",
+                    error: "Failed to logout",
+                    loading: "Logging out",
+                  });
                 }}
               >
                 Logout
