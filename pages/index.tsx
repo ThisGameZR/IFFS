@@ -112,7 +112,7 @@ export default function Home() {
             </div>
             <div className="feature-box">
               <div className="image">
-                <img src="/assets/ico1.png" alt="" />
+                <img src="/assets/Ico4.png" alt="" />
               </div>
               <h4>Suggestion</h4>
               <p>Propose some solution according to the problem or suggestion.</p>
