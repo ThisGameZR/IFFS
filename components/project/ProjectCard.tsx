@@ -8,6 +8,7 @@ import { fetchDeleteProject, fetchUpdateProjectName } from "fetch/project";
 import { useUser } from "context/UserProvider";
 import { useQueryClient } from "react-query";
 import { useContainer } from "context/ContainerProvider";
+import DropDownMenu from "components/DropdownMenu";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const router = useRouter();
@@ -79,7 +80,23 @@ export default function ProjectCard({ project }: { project: Project }) {
           >
             {project.name}
           </h1>
-          <SimpleMenu onEdit={() => setOpenEdit(true)} onDelete={() => setOpenDelete(true)} display />
+          <DropDownMenu
+            menus={[
+              { title: "Open", onClick: () => routerAppend(project) },
+              {
+                title: "Open in new tab",
+                onClick: () => window.open(`${window.location.href}/${project.id}`, "_blank"),
+              },
+              {
+                title: "Rename",
+                onClick: () => setOpenEdit(true),
+              },
+              {
+                title: "Delete",
+                onClick: () => setOpenDelete(true),
+              },
+            ]}
+          />
         </div>
       </div>
     </>

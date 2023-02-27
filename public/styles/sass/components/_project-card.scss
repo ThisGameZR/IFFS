@@ -10,6 +10,8 @@
     height: 100%;
     object-fit: cover;
     font-size: 12rem;
+    display: flex;
+    justify-content: center;
     @include media("<=desktop") {
       font-size: 8rem;
     }
@@ -22,7 +24,7 @@
   }
   .project-info {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 1rem;
     h1 {
       font-size: 1.2rem;
