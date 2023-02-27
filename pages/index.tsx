@@ -91,21 +91,21 @@ export default function Home() {
           <div className="grid">
             <div className="feature-box">
               <div className="image">
-                <img src="/assets/ico1.png" alt="" />
+                <img src="/assets/Ico1.png" alt="" />
               </div>
               <h4>Criticality Identity</h4>
               <p>Visual the importance of feedback and eliminate duplicate feedback.</p>
             </div>
             <div className="feature-box">
               <div className="image">
-                <img src="/assets/ico2.png" alt="" />
+                <img src="/assets/Ico2.png" alt="" />
               </div>
               <h4>Overall Visualize</h4>
               <p>Visualize the overall feedback type of customers on the website.</p>
             </div>
             <div className="feature-box">
               <div className="image">
-                <img src="/assets/ico3.png" alt="" />
+                <img src="/assets/Ico3.png" alt="" />
               </div>
               <h4>Categorization</h4>
               <p>Auto identify each feedback seperately and categorization.</p>
