@@ -47,7 +47,6 @@
   margin-left: calc((var(--dropdown-width) / 2) * -1);
   box-sizing: border-box;
   z-index: 2;
-
   background: var(--dropdown-background);
   border-radius: 6px;
   list-style: none;
@@ -64,7 +63,6 @@
   padding: 10px 0.8rem;
   width: 100%;
   box-sizing: border-box;
-
   color: var(--dropdown-color);
   text-decoration: none;
 }
