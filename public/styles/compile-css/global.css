@@ -633,15 +633,8 @@ html {
 }
 .identify-box.highlight {
   color: white;
-  background: radial-gradient(
-    140.94% 140.94% at 50% 100%,
-    #5a7cfb 0%,
-    rgba(45, 89, 255, 0.322207) 67.78%,
-    rgba(90, 124, 251, 0) 100%
-  );
-  filter: drop-shadow(43px 73px 34px rgba(0, 0, 0, 0.01)) drop-shadow(24px 41px 29px rgba(0, 0, 0, 0.02))
-    drop-shadow(11px 18px 21px rgba(0, 0, 0, 0.04)) drop-shadow(3px 5px 12px rgba(0, 0, 0, 0.04))
-    drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.05));
+  background: radial-gradient(140.94% 140.94% at 50% 100%, #5a7cfb 0%, rgba(45, 89, 255, 0.322207) 67.78%, rgba(90, 124, 251, 0) 100%);
+  filter: drop-shadow(43px 73px 34px rgba(0, 0, 0, 0.01)) drop-shadow(24px 41px 29px rgba(0, 0, 0, 0.02)) drop-shadow(11px 18px 21px rgba(0, 0, 0, 0.04)) drop-shadow(3px 5px 12px rgba(0, 0, 0, 0.04)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.05));
 }
 .identify-box.emphasize {
   color: #4793ff;
@@ -779,7 +772,8 @@ html {
 .suggestion-card .suggestion ol li {
   margin-bottom: 0.3125rem;
 }
-<<<<<<< HEAD ======= .dropdown {
+
+.dropdown {
   --dropdown-highlight: dodgerblue;
   --dropdown-width: 10rem;
   --dropdown-background: white;
@@ -882,7 +876,8 @@ html {
   bottom: 0;
   z-index: 1;
 }
->>>>>>>a097fbd1557976c024f06b3befda29188de8ae8a .home {
+
+.home {
   display: flex;
   flex-direction: column;
   width: 100vw;
