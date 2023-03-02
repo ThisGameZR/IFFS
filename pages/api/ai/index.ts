@@ -114,6 +114,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       await createAnalyze(userId, projectId, documentId, pageId, analyze);
       return res.status(200).send(analyze);
     } catch (e: any) {
+      console.log("Error with AI");
       console.log(e);
       return res.status(400).send(e);
     }
