@@ -30,8 +30,8 @@ export default function SuggestionCard({
         <h4>Our Suggestion</h4>
         {suggestion.includes("1.") ? (
           <ol>
-            {arr.map((a) => {
-              return <li>{a}</li>;
+            {arr.map((a, i) => {
+              return <li key={i + a}>{a}</li>;
             })}
           </ol>
         ) : (
