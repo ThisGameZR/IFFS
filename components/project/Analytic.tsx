@@ -109,42 +109,42 @@ export default function Analytic() {
   const UXPositive =
     (
       (processedData.filter((p) => p.type === "UX").filter((p) => p.sentiment === "Positive").length /
-        processedData.filter((p) => p.type === "UX").length) *
+        (processedData.filter((p) => p.type === "UX").length || 1)) *
       100
     ).toFixed(2) + "%";
 
   const UXNeutral =
     (
       (processedData.filter((p) => p.type === "UX").filter((p) => p.sentiment === "Neutral").length /
-        processedData.filter((p) => p.type === "UX").length) *
+        (processedData.filter((p) => p.type === "UX").length || 1)) *
       100
     ).toFixed(2) + "%";
 
   const UXNegative =
     (
       (processedData.filter((p) => p.type === "UX").filter((p) => p.sentiment === "Negative").length /
-        processedData.filter((p) => p.type === "UX").length) *
+        (processedData.filter((p) => p.type === "UX").length || 1)) *
       100
     ).toFixed(2) + "%";
 
   const UIPositive =
     (
       (processedData.filter((p) => p.type === "UI").filter((p) => p.sentiment === "Positive").length /
-        processedData.filter((p) => p.type === "UI").length) *
+        (processedData.filter((p) => p.type === "UI").length || 1)) *
       100
     ).toFixed(2) + "%";
 
   const UINeutral =
     (
       (processedData.filter((p) => p.type === "UI").filter((p) => p.sentiment === "Neutral").length /
-        processedData.filter((p) => p.type === "UI").length) *
+        (processedData.filter((p) => p.type === "UI").length || 1)) *
       100
     ).toFixed(2) + "%";
 
   const UINegative =
     (
       (processedData.filter((p) => p.type === "UI").filter((p) => p.sentiment === "Negative").length /
-        processedData.filter((p) => p.type === "UI").length) *
+        (processedData.filter((p) => p.type === "UI").length || 1)) *
       100
     ).toFixed(2) + "%";
 

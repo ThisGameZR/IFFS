@@ -27,10 +27,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     try {
       let query = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `prompt:"${prompt}"
-        Seperate this into phrases ("and", ".") and return it as an array`,
+        prompt: `prompt:"${prompt}"\n Identify phrases and return it as an array`,
         max_tokens: 3000,
-        temperature: 0,
+        temperature: 0.7,
       });
 
       let usage = {
@@ -49,13 +48,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         issues.map(async (i: any) => {
           let sentiment = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `prompt:${i} Return sentiment as <Positive || Negative>`,
+            prompt: `prompt:"${i}" Is this Positive, Negative or Neutral`,
             max_tokens: 1000,
             temperature: 0,
           });
           let type = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `prompt:${i} Return type as <UX || UI> only do not include any thing other than this`,
+            prompt: `prompt:"${i}" Is this UX or UI problem, return only UX or UI do not type anything other than this`,
             max_tokens: 1000,
             temperature: 0,
           });
@@ -69,7 +68,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             model: "text-davinci-003",
             prompt: `How to improve this or any suggestion: ${i}`,
             max_tokens: 3000,
-            temperature: 0.8,
+            temperature: 1,
           });
           usage = {
             ...usage,
@@ -84,13 +83,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
               //@ts-ignore
               (suggestion.data.usage?.total_tokens / 1000) * 0.02 * 35,
           };
-          const sen =
-            sentiment.data.choices[0].text?.includes("positive") && sentiment.data.choices[0].text?.includes("negative")
-              ? "Neutral"
-              : sentiment.data.choices[0].text?.includes("positive")
-              ? "Positive"
-              : "Negative";
-          const ty = type.data.choices[0].text?.includes("UX") ? "UX" : "UI";
+          const sen = sentiment.data.choices[0].text?.toLowerCase().includes("neutral")
+            ? "Neutral"
+            : sentiment.data.choices[0].text?.toLowerCase().includes("positive")
+            ? "Positive"
+            : "Negative";
+          const ty = type.data.choices[0].text?.toLowerCase().includes("ux") ? "UX" : "UI";
           arrays.push({
             issue: i,
             sentiment: sen,
