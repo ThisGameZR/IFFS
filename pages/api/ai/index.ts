@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     try {
       let query = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `prompt:${prompt}\n Turn this into sentences and return it as an array`,
+        prompt: `prompt:${prompt}\n Seperate this into phrases and return it as an array`,
         max_tokens: 3000,
         temperature: 0,
       });
