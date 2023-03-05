@@ -16,6 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     }
   }
   if (req.method === "POST") {
+    console.time("ai");
     const { prompt, userId, projectId, documentId, pageId } = req.body;
     if (!prompt) {
       return res.status(400).json({
@@ -26,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     try {
       let query = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `prompt:${prompt}\n Identify sentences which imply issue and return it as an array`,
+        prompt: `prompt:${prompt}\n Turn this into sentences and return it as an array`,
         max_tokens: 3000,
         temperature: 0,
       });
@@ -100,11 +101,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       );
       arrays = arrays.map((a) => {
         return {
-          issue: a.issue.replace(/(\r\n|\n|\r)/gm, ""),
-          sentiment: a.sentiment.replace(/(\r\n|\n|\r)/gm, ""),
-          type: a.type.replace(/(\r\n|\n|\r)/gm, ""),
-          label: a.label.replace(/(\r\n|\n|\r)/gm, ""),
-          suggestion: a.suggestion.replace(/(\r\n|\n|\r)/gm, ""),
+          issue: cleanString(a.issue),
+          sentiment: cleanString(a.sentiment),
+          type: cleanString(a.type),
+          label: cleanString(a.label),
+          suggestion: cleanString(a.suggestion),
         };
       });
       const analyze = {
@@ -112,6 +113,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         usage: usage,
       } as Analyze;
       await createAnalyze(userId, projectId, documentId, pageId, analyze);
+      console.timeEnd("ai");
       return res.status(200).send(analyze);
     } catch (e: any) {
       console.log("Error with AI");
@@ -124,4 +126,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   if (req.method === "DELETE") {
   }
   return res.status(400).send("Bad request");
+}
+
+function cleanString(string: string) {
+  return string.replace(/(\r\n|\n|\r)/gm, "");
 }
