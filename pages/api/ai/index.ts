@@ -2,11 +2,6 @@ import { createAnalyze, getAnalyzes } from "firestore/analyze";
 import { Analyze } from "models/Project";
 import type { NextApiRequest, NextApiResponse } from "next";
 import openai from "utils/openaiClient";
-import winston from "winston";
-
-const logger = winston.createLogger({
-  transports: [new winston.transports.File({ filename: "error.log", level: "error" })],
-});
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   if (req.method === "GET") {
@@ -72,7 +67,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       return res.status(200).send("");
     } catch (e: any) {
       console.log(e);
-      logger.error(e);
       return res.status(400).send(e);
     }
   }
