@@ -249,6 +249,9 @@ html {
 .project__layout__header :first-child {
   cursor: pointer;
 }
+.project__layout__header h1 {
+  font-size: 1.5rem;
+}
 .project__navbar {
   width: 100%;
   display: flex;
@@ -427,9 +430,11 @@ html {
 
 .project-page {
   display: flex;
+  justify-content: space-between;
   height: 2rem;
   align-items: center;
   padding-left: 2.875rem;
+  padding-right: 1rem;
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
   gap: 0.3125rem;
@@ -617,6 +622,7 @@ html {
   align-items: center;
   gap: 0.625rem;
   background: white;
+  color: #575656;
   border-radius: 14px;
 }
 .identify-box > .icon {
@@ -1002,8 +1008,13 @@ html {
   width: 16%;
 }
 .home-features .grid .feature-box .image {
+  width: 150px;
+  height: 150px;
   padding: 1rem 1rem;
   border: 1px solid rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .home-features .grid .feature-box h4 {
   font-size: 1.1rem;

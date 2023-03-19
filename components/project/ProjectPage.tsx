@@ -52,8 +52,8 @@ export default function ProjectPage({
         onMouseOver={() => setDisplayMenu(true)}
         onMouseLeave={() => setDisplayMenu(false)}
       >
-        <div className="page-name" onClick={() => onClick()}>
-          <AiOutlineFileText /> {page.name}
+        <div className="page-name" onClick={() => onClick()} title={page.name}>
+          <AiOutlineFileText /> {page.name!.length < 14 ? page.name : page.name?.slice(0, 14) + "..."}
         </div>
         <SimpleMenu onEdit={() => setOpenEdit(true)} onDelete={() => setOpenDelete(true)} display={displayMenu} />
       </div>

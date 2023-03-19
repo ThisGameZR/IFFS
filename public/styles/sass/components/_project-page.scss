@@ -1,8 +1,10 @@
 .project-page {
   display: flex;
+  justify-content: space-between;
   height: rem(32px);
   align-items: center;
   padding-left: rem(46px);
+  padding-right: rem(16px);
   padding-top: rem(20px);
   padding-bottom: rem(20px);
   gap: rem(5px);

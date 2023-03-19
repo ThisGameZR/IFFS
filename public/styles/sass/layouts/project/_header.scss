@@ -11,6 +11,9 @@
       :first-child {
         cursor: pointer;
       }
+      h1 {
+        font-size: rem(24px);
+      }
     }
   }
   &__navbar {
