@@ -34,7 +34,7 @@ export default function RightBar() {
               <SuggestionCard
                 key={issue.issue + i}
                 issue={issue.issue}
-                suggestion={issue.suggestion}
+                suggestion={issue.suggestion || "Nothing"}
                 sentiment={issue.sentiment}
                 type={issue.type}
               />
