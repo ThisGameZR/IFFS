@@ -283,21 +283,9 @@ export default function Analytic() {
       <div className="analytic-identify-group">
         <div className="analytic-identify-group-box">
           <IdentifyBox icon={<TbRefreshAlert />} title="ALL IDENTIFY" amount={problemsAmount} className="highlight" />
-          <IdentifyBox
-            icon={<AiOutlineSmile />}
-            title="POSITIVE"
-            amount={sentimentProblems(processedData, "Positive")}
-          />
-          <IdentifyBox
-            icon={<MdOutlineMoodBad />}
-            title="NEGATIVE"
-            amount={sentimentProblems(processedData, "Negative")}
-          />
-          <IdentifyBox
-            icon={<MdOutlineAssistant />}
-            title="NEUTRAL"
-            amount={sentimentProblems(processedData, "Neutral")}
-          />
+          <IdentifyBox icon={<AiOutlineSmile />} title="POSITIVE" amount={sentimentProblems(graphData, "Positive")} />
+          <IdentifyBox icon={<MdOutlineMoodBad />} title="NEGATIVE" amount={sentimentProblems(graphData, "Negative")} />
+          <IdentifyBox icon={<MdOutlineAssistant />} title="NEUTRAL" amount={sentimentProblems(graphData, "Neutral")} />
         </div>
         <div className="analytic-identify-group-feedback">
           {processedData.map((p, i) => {
