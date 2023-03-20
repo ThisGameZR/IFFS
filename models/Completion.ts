@@ -1,8 +1,8 @@
 interface Completion {
   id: string;
   text: Prompt;
-  created: number;
   usage: Usage;
+  elapsedTime: string;
 }
 
 interface Prompt {

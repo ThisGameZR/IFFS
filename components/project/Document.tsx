@@ -33,10 +33,10 @@ export default function Document() {
     try {
       toast.promise(fetchPostAnalyze(text, userId, projectId, documentId, pageId), {
         loading: "Analyzing your data...",
-        success: () => {
+        success: (res) => {
           setForceUpdate((p) => p + 1);
           setLoading(false);
-          return "Successfully analyzing your data";
+          return "Successfully analyzing your data in " + res.elapsedTime;
         },
         error: () => {
           setLoading(false);
