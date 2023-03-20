@@ -60,16 +60,12 @@ export default function Analytic() {
   }
 
   let removeDups: unknown[] = [];
-  problemCounters
-    ?.filter((obj, index, arr) => {
-      return arr.findIndex((o) => o.label === obj.label) === index;
-    })
-    .forEach((p) => {
-      const content = JSON.stringify(p);
-      if (!removeDups.includes(content)) {
-        removeDups.push(content);
-      }
-    });
+  problemCounters?.forEach((p) => {
+    const content = JSON.stringify(p);
+    if (!removeDups.includes(content)) {
+      removeDups.push(content);
+    }
+  });
 
   const processedData = removeDups.map((r) => JSON.parse(r as string)).sort((a, b) => b.count - a.count) as {
     type: string;
@@ -79,13 +75,18 @@ export default function Analytic() {
     suggestion: string;
     count: number;
   }[];
+
+  const graphData = processedData?.filter((obj, index, arr) => {
+    return arr.findIndex((o) => o.label === obj.label) === index;
+  });
+
   const problemsAmount = analyzes?.issues.length || 0;
-  const labels = processedData.map((p) => {
+  const labels = graphData.map((p) => {
     return ((p.count / analyzes!.issues.length) * 100).toPrecision(4) + "% " + p.label;
   });
   const others =
     (
-      ((problemsAmount - processedData.slice(0, 5).reduce((acc, cur) => (acc += cur.count), 0)) / problemsAmount) *
+      ((problemsAmount - graphData.slice(0, 5).reduce((acc, cur) => (acc += cur.count), 0)) / problemsAmount) *
       100
     ).toPrecision(4) + "% Others";
   const data = {
@@ -93,8 +94,8 @@ export default function Analytic() {
     datasets: [
       {
         data: [
-          ...processedData.slice(0, 5).map((p) => p.count),
-          problemsAmount - processedData.slice(0, 5).reduce((acc, cur) => (acc += cur.count), 0),
+          ...graphData.slice(0, 5).map((p) => p.count),
+          problemsAmount - graphData.slice(0, 5).reduce((acc, cur) => (acc += cur.count), 0),
         ],
         backgroundColor: CHART_COLORS,
         borderColor: CHART_COLORS,
