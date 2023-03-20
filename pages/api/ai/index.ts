@@ -65,7 +65,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         thb: (query.data.usage?.total_tokens / 1000) * 0.02 * 35,
       };
       const endTime = performance.now();
-      const elapsedTime = (endTime - startTime) / 1000 + " seconds";
+      const elapsedTime = ((endTime - startTime) / 1000).toFixed(3) + " seconds";
       console.timeEnd("ai");
       const analyze = {
         issues: jsonArray,
