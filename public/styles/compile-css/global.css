@@ -287,7 +287,7 @@ html {
   cursor: pointer;
 }
 .project__layout .rightbar {
-  height: 100%;
+  min-height: 100vh;
   width: 28.3125rem;
   background-color: #fff;
   overflow-y: scroll;
@@ -297,7 +297,7 @@ html {
   gap: 2.25rem;
   align-items: center;
   padding: 2rem 0;
-  margin-bottom: 4rem;
+  padding-bottom: 5rem;
 }
 
 .project {
@@ -1122,7 +1122,7 @@ html {
 }
 .analytic-header-chart h3 {
   position: absolute;
-  top: 65px;
+  top: 45px;
   left: 35px;
   font-size: 1.2rem;
   font-weight: 600;
@@ -1135,6 +1135,7 @@ html {
   justify-content: center;
   gap: 1.875rem;
   padding: 0 2rem;
+  padding-bottom: 2.5rem;
 }
 .analytic-header-feedback h3 {
   font-size: 1.1rem;

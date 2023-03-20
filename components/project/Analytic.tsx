@@ -60,12 +60,17 @@ export default function Analytic() {
   }
 
   let removeDups: unknown[] = [];
-  problemCounters?.forEach((p) => {
-    const content = JSON.stringify(p);
-    if (!removeDups.includes(content)) {
-      removeDups.push(content);
-    }
-  });
+  problemCounters
+    ?.filter((obj, index, arr) => {
+      return arr.findIndex((o) => o.label === obj.label) === index;
+    })
+    .forEach((p) => {
+      const content = JSON.stringify(p);
+      if (!removeDups.includes(content)) {
+        removeDups.push(content);
+      }
+    });
+
   const processedData = removeDups.map((r) => JSON.parse(r as string)).sort((a, b) => b.count - a.count) as {
     type: string;
     sentiment: string;
