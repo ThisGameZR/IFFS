@@ -22,6 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
   if (req.method === "POST") {
     console.time("ai");
+    const startTime = performance.now();
     const { prompt, userId, projectId, documentId, pageId } = req.body;
     if (!prompt) {
       return res.status(400).json({
@@ -63,12 +64,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         //@ts-ignore
         thb: (query.data.usage?.total_tokens / 1000) * 0.02 * 35,
       };
+      const endTime = performance.now();
+      const elapsedTime = (endTime - startTime) / 1000 + " seconds";
+      console.timeEnd("ai");
       const analyze = {
         issues: jsonArray,
         usage: usage,
+        elapsedTime,
       } as Analyze;
       await createAnalyze(userId, projectId, documentId, pageId, analyze);
-      console.timeEnd("ai");
       return res.status(200).send(analyze);
     } catch (e: any) {
       console.log(e.response.data);
