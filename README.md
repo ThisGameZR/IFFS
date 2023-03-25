@@ -2,7 +2,17 @@
 
 IFFS is a web-based application designed to streamline the process of collecting and analyzing customer feedback. Our solution aims to help website owners easily see the critical level of the problems reported by their users, prioritize which problems should be fixed first, and monitor the overall feedback trend on their website pages. Our system categorizes feedback into three categories: positive, negative, and neutral, providing an in-depth analysis of user satisfaction levels. With IFFS, website owners can make informed decisions to improve their website and enhance the user experience.
 
+## Features
+
+- Streamlined feedback collection: IFFS makes it easy for website owners to collect feedback from various sources, including chatbots, contact forms, and surveys.
+- Real-time feedback analysis: IFFS categorizes feedback into positive, negative, and neutral, allowing website owners to quickly see the critical level of the problems reported by their users.
+- Prioritization of critical problems: IFFS uses machine learning algorithms to prioritize which problems should be fixed first, based on factors such as the severity and frequency of the problem.
+- Trend analysis: IFFS provides website owners with an overall feedback trend analysis, allowing them to monitor changes in user satisfaction levels over time.
+- Customizable dashboard: IFFS offers a customizable dashboard that allows website owners to choose which metrics to display and track.
+
 ## Demo
+
+To see IFFS in action, try entering feedback into our demo at https://iffs.vercel.app/. You can enter any feedback you like, and our system will categorize it and provide an in-depth analysis of user satisfaction levels.
 
 Input
 
@@ -10,11 +20,11 @@ Input
 
 Output
 
+![analytic reesult](./public/assets/analytic-result.png)
+
 ## Deployment
 
 We hosted website on Vercel, and hosted a database on firestore
-
-https://iffs.vercel.app/
 
 ## Tech Stack
 
@@ -27,3 +37,6 @@ https://iffs.vercel.app/
 ## Authors
 
 - [@ThisGameZR](https://www.github.com/ThisGameZR)
+- [@OhiyuiiDesu](ohiyuiidesu@gmail.com)
+
+### We hope that IFFS will help website owners improve their websites and enhance the user experience. Thank you for considering our solution!
