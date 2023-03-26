@@ -26,6 +26,20 @@ Output
 
 We hosted website on Vercel, and hosted a database on firestore
 
+## Setup your own deployment
+
+### Self-hosted
+
+1. Clone the project from github and open working repository
+2. Open terminal run `npm install`
+3. In terminal run `mv .env.example .env.local` (this will copy `.env.example` and write new file name `.env.local`)
+4. Config file `.env.local` with your own keys
+5. Run the app in terminal with `npm start`
+
+### Cloud-hosted
+
+This could be vary depends on the cloud server you use, but the key word is `Setup NextJs with ......` and you can see what environtment variables you need to config in `.env.example` file
+
 ## Tech Stack
 
 **Client:** NextJs, ReactQuery, SaSS
